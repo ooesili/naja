@@ -15,3 +15,5 @@ html(lang="en", ng-app="app")
     link(rel="stylesheet", href="assets/css/app.css")
   body(ng-controller="MainCtrl")
     h1 Hello!
+    pre: json-nav(obj="obj")
+    pre: {{obj | json}}

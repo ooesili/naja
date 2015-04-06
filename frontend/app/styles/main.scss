@@ -2,92 +2,13 @@
   box-sizing: border-box;
 }
 
-body {
-  text-align: center;
+pre {
+  background-color: #DED;
+  padding: 0.3em;
+  border: 1px solid #ABA;
+  overflow-x: scroll;
 }
 
-h1 {
-  margin-bottom: 2em;
-}
-
-/* grid spacing */
-.grid {
-  width: 30em;
-  height: 30em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.row {
-  width: 100%;
-  height: 33%;
-}
-
-.cell {
-  box-sizing: border-box;
-  display: block;
-  float: left;
-  width: 32%;
-  height: 100%;
-}
-
-
-/* borders */
-
-.cell {
-  border: 1px solid black;
-}
-
-.cell:first-child {
-  border-left-style: none;
-}
-
-.cell:last-child {
-  border-right-style: none;
-}
-
-.row:first-child > .cell {
-  border-top-style: none;
-}
-
-.row:last-child > .cell {
-  border-bottom-style: none;
-}
-
-
-/* X's and O's */
-.cell {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 2em;
-  font-size: 5em;
-  color: grey;
-  font-family: sans-serif;
-}
-
-/* cell hover */
-.cell-set {
-  color: orange;
-}
-
-/* new game button */
-
-a.btn-new {
-  display: inline-block;
-  margin-top: 3em;
-  text-align: center;
-  text-decoration: none;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #3344FF;
-  padding: 0.8em;
-  border-radius: 0.3em;
-}
-
-a.btn-new,
-a.btn-new:hover,
-a.btn-new:active,
-a.btn-new:visited {
-  text-decoration: none;
-  color: #FFFFFF;
+.red {
+  color: red;
 }
