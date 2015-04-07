@@ -9,6 +9,10 @@ pre {
   overflow-x: scroll;
 }
 
-.red {
+.selected {
+  color: red;
+}
+
+span span span:hover {
   color: red;
 }
