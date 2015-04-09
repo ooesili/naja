@@ -2,71 +2,75 @@ angular.module 'directives'
 
 .directive 'jsonNav', ['$compile', '$templateRequest', '$templateCache',
   ($compile, $templateRequest, $templateCache)->
-    # helper method for grabbing templates
-    getTemplate = (name, callback)->
-      # we use this in two places
-      url = "directives/json_nav/#{name}.html"
-      # resolve the promise and call the callback
-      $templateRequest(url, false).then ->
-        response = $templateCache.get url
-        template = if response[3] is 'OK'
-          response[1]
-        else
-          'There was a problem fetching data from the server'
-        callback(template)
-    # compiles a template and inserts it into the dom
-    compileAndReplace = (element, scope)->
-      (template) ->
-        # remove the newline from the end of the file
-        template = _.trimRight template
-        # create and compile the lement
-        newElement = angular.element "<span>#{template}</span>"
-        $compile(newElement)(scope)
-        # insert it into the DOM
-        element.replaceWith newElement
-    # object to return
     scope:
       obj: '='
-      zipper: '=?'
-      indent: '=?'
     template: '<div></div>'
-    terminal: true
     restrict: 'E'
     link: (scope, element, attrs)->
-      ##### INITIALIZATION #####
-      scope.indent = '' if not scope.indent?
-      scope.newIndent = scope.indent + '  '
-      scope.zipper ||= []
-      scope.thisObj = _.reduce scope.zipper, (accum, key)->
-        accum[key]
-      , scope.obj
-      ##### OBJECT OR ARRAY #####
-      if _.isObject scope.thisObj
-        ##### ARRAY #####
-        if _.isArray scope.thisObj
-          templateName = 'array'
-          newZipperEnds = _.times scope.thisObj.length
-        ##### OBJECT #####
-        else
-          newZipperEnds = _.keys(scope.thisObj)
-          templateName = 'object'
-          # to grab the current key from the zipper
-          scope.last = _.last
-        scope.newZippers = _.map newZipperEnds, (key)->
-          newZipper = _.clone scope.zipper
+      obj = scope.obj
+      # creates the new zippers to map over
+      genNewZippers = (zipper, keys)->
+        _.map keys, (key)->
+          newZipper = _.clone zipper
           newZipper.push key
           newZipper
-      ##### SCALAR #####
-      else
-        templateName = 'scalar'
-      getTemplate templateName, compileAndReplace(element, scope)
-      #scope.select = (event)->
-        #event.stopPropagation()
-        #setTimeout ->
-          #lookup = _.reduce scope.zipper, (accum, key)->
-            #accum + "[#{JSON.stringify key}]"
-          #, 'payload'
-          #alert lookup
-        #, 0
+      # walk the JSON object
+      treeWalker = (indent, zipper, shouldAppendComma, shouldPrependKey)->
+        # possibly appends a comma to the string
+        appendComma = (string)->
+          if shouldAppendComma then string + ',' else string
+        # possibly prepends the last key to the string
+        prependKey = (string)->
+          
+          if shouldPrependKey then "#{_.last zipper}: #{string}" else string
+        # lookup the current subtree
+        thisObj = _.reduce zipper, ((accum, key)-> accum[key]), obj
+        # array
+        if _.isArray thisObj
+          # create new zippers for this iteration
+          newZippers = genNewZippers zipper, _.times thisObj.length
+          # beginning bracket
+          result = [[zipper, indent + prependKey '[']]
+          # allows us to skip putting a comma on the last element
+          lastIndex = newZippers.length - 1
+          # recurse over each new zipper
+          _.each newZippers, (newZipper, index)->
+            treeResults = treeWalker(
+              indent + '  '
+              newZipper
+              index != lastIndex
+            )
+            result.push treeResults...
+          # close the bracket
+          result.push [zipper, indent + appendComma ']']
+        # object
+        else if _.isObject thisObj
+          # create new zippers for this iteration
+          newZippers = genNewZippers zipper, _.keys thisObj
+          # beginning bracket
+          result = [[zipper, indent + prependKey '{']]
+          # allows us to skip putting a comma on the last element
+          lastIndex = newZippers.length - 1
+          # recurse over each new zipper
+          _.each newZippers, (newZipper, index)->
+            treeResults = treeWalker(
+              indent + '  '
+              newZipper
+              index != lastIndex
+              true
+            )
+            result.push treeResults...
+          # close the bracket
+          result.push [zipper, indent + appendComma '}']
+        # scalar
+        else
+          json = JSON.stringify thisObj
+          result = [[zipper, indent + prependKey appendComma json]]
+        result
+      result = treeWalker '', []
+      result = _.map(result, (pair)-> "<div>#{pair[1]}</div>").join('')
+      #result = result.join '\n'
+      newElement = angular.element "<span>#{result}</span>"
+      element.replaceWith newElement
       return
 ]
