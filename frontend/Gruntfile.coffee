@@ -14,8 +14,7 @@ module.exports = (grunt)->
         ]
       styles:
         sass: ['app/styles']
-      views:
-        jade: 'app/views'
+      views: 'app/views'
       public: ['public/*']
     ########### COFFEESCRIPT ###########
     coffee:
@@ -34,6 +33,11 @@ module.exports = (grunt)->
         src: ['<%= layout.scripts.vendor %>']
         dest: '../public/assets/scripts/'
         ext: '.js'
+      html:
+        expand: true
+        cwd: '<%= layout.views %>'
+        src: ['**/*.html']
+        dest: '../public'
       public:
         expand: true
         src: ['public/*']
@@ -45,7 +49,7 @@ module.exports = (grunt)->
           data:
             production: process.env.NODE_ENV == 'production'
         expand: true
-        cwd: '<%= layout.views.jade %>'
+        cwd: '<%= layout.views %>'
         src: ['**/*.jade']
         ext: '.html'
         dest: '../public'
@@ -63,8 +67,11 @@ module.exports = (grunt)->
         files: ['<%= layout.styles.sass %>/**/*.scss']
         tasks: ['sass']
       jade:
-        files: ['<%= layout.views.jade %>/**/*.jade']
+        files: ['<%= layout.views %>/**/*.jade']
         tasks: ['jade']
+      html:
+        files: ['<%= layout.views %>/**/*.html']
+        tasks: ['copy:html']
       public:
         files: ['<%= copy.public.src %>']
         tasks: ['copy:public']
