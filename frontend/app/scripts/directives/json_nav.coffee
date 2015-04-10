@@ -75,7 +75,7 @@ angular.module 'directives'
         result = [thisTreeResult, thisIterResult]
       result
     result = treeWalker '', [], 0
-    newElement = angular.element "<span>#{JSON.stringify result, null, 2}</span>"
+    newElement = angular.element "<pre>#{JSON.stringify result, null, 2}</pre>"
     element.replaceWith newElement
     return
 ]
