@@ -33,10 +33,7 @@ pre {
   overflow-x: scroll;
 }
 
-.selected {
-  color: $red;
-}
-
-.json-hightlight {
-  color: $green;
+.selected:hover {
+  color: $base3;
+  background-color: $green;
 }

@@ -1,81 +1,81 @@
 angular.module 'directives'
 
-.directive 'jsonNav', ['$compile', ($compile)->
+.directive 'jsonView', ['$compile', ($compile)->
   scope:
     obj: '='
   template: '<div></div>'
   restrict: 'E'
   link: (scope, element, attrs)->
-    obj = scope.obj
-    # creates the new zippers to map over
-    eachNewZipper = (zipper, keys, callback)->
-      lastIndex = keys.length - 1
-      _.each keys, (key, index)->
-        newZipper = _.clone zipper
-        newZipper.push key
-        callback newZipper, key, index is lastIndex
+    # walk the object and return the data structures we need
+    treeWalker = (topObject)->
+      lines = []
+      go = (zipper, isLast, upperKey)->
+        # append a comma to a string if isLast is true
+        maybePrependKey = (string)->
+          if upperKey then "#{JSON.stringify upperKey}: #{string}" else string
+        maybeAddComma = (string)->
+          if isLast then string else string + ','
+        # used for indetation and is passed into the tree structure
+        depth = zipper.length
+        # indentation and a method to indent a string
+        indentation = _.repeat '  ', depth
+        indent = (string)->
+          indentation + string
+        # unzip object from tree
+        thisObject = _.reduce zipper, (accum, key)->
+          accum[key]
+        , topObject
+        # figure out the type
+        isObject = _.isObject thisObject
+        isArray = _.isArray thisObject
+        # object or array
+        if isObject
+          # before recursion
+          if isArray
+            startLine = '['
+            keys = _.times thisObject.length
+          else
+            startLine = '{'
+            keys = _.keys thisObject
+          formattedStartLine = indent maybePrependKey startLine
+          lines.push "<div>#{formattedStartLine}"
+          # recursion
+          lastIndex = keys.length - 1
+          _.each keys, (key, index)->
+            newZipper = _.clone zipper
+            newZipper.push key
+            if isArray
+              go newZipper, index == lastIndex
+            else
+              go newZipper, index == lastIndex, key
+          # after recursion
+          if isArray
+            endLine = ']'
+          else
+            endLine = '}'
+          formattedEndLine = indent maybeAddComma endLine
+          lines.push "#{formattedEndLine}</div>"
+        # scalar
+        else
+          line = indent maybePrependKey maybeAddComma JSON.stringify thisObject
+          lines.push "<div>#{line}</div>"
+          #lines.push line
         return
-      return
-    # walk the JSON object
-    treeWalker = (indent, zipper, depth, shouldAppendComma, shouldPrependKey)->
-      # possibly appends a comma to the string
-      appendComma = (string)->
-        if shouldAppendComma then string + ',' else string
-      # possibly prepends the last key to the string
-      prependKey = (string)->
-        if shouldPrependKey then "#{_.last zipper}: #{string}" else string
-      # lookup the current subtree
-      thisObj = _.reduce zipper, ((accum, key)-> accum[key]), obj
-      # array
-      if _.isArray thisObj
-        # create new zippers for this iteration
-        # beginning bracket
-        thisIterResult = [[zipper, indent + prependKey '[']]
-        thisTreeResult = {tree: [], depth: depth}
-        # recurse over each new zipper
-        eachNewZipper zipper, _.times(thisObj.length),
-          (newZipper, index, isLast)->
-            [treeResult, iterResult] = treeWalker(
-              indent + '  '
-              newZipper
-              depth + 1
-              isLast
-            )
-            thisTreeResult.tree.push treeResult
-            thisIterResult.push iterResult
-            return
-        # close the bracket
-        thisIterResult.push [zipper, indent + appendComma ']']
-        result = [thisTreeResult, thisIterResult]
-      # object
-      else if _.isObject thisObj
-        # beginning bracket
-        thisIterResult = [[zipper, indent + prependKey '{']]
-        thisTreeResult = {tree: {}, depth: depth}
-        # recurse over each new zipper
-        eachNewZipper zipper, _.keys(thisObj),
-          (newZipper, key, isLast)->
-            [treeResult, iterResult] = treeWalker(
-              indent + '  '
-              newZipper
-              depth + 1
-              isLast
-              true
-            )
-            thisTreeResult.tree[key] = treeResult
-            thisIterResult.push iterResult...
-        # close the bracket
-        thisIterResult.push [zipper, indent + appendComma '}']
-        result = [thisTreeResult, thisIterResult]
-      # scalar
-      else
-        json = JSON.stringify thisObj
-        thisIterResult = [[zipper, indent + prependKey appendComma json]]
-        thisTreeResult = {depth: depth}
-        result = [thisTreeResult, thisIterResult]
-      result
-    result = treeWalker '', [], 0
-    newElement = angular.element "<pre>#{JSON.stringify result, null, 2}</pre>"
+      go []
+      lines
+    # compile and insert the element into the DOM
+    jsonLines = treeWalker scope.obj
+    newElement = angular.element "<pre>#{jsonLines.join('')}</pre>"
+    $compile(newElement)(scope)
     element.replaceWith newElement
     return
 ]
+
+$ ->
+  divs = $('pre div')
+  divs.on 'mouseover', (e)->
+    e.stopPropagation()
+    $(this).addClass('selected')
+  divs.on 'mouseout', (e)->
+    e.stopPropagation()
+    $(this).removeClass('selected')
