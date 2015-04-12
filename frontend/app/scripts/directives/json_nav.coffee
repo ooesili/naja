@@ -1,6 +1,6 @@
 angular.module 'directives'
 
-.directive 'jsonView', ['$compile', ($compile)->
+.directive 'jsonView', ['$compile', 'jsonEsc', ($compile, jsonEsc)->
   scope:
     obj: '='
     selectedStateObjects: '='
@@ -14,7 +14,10 @@ angular.module 'directives'
       go = (zipper, isLast, upperKey)->
         # prepend a upperKey to a string if upperKey is given
         maybePrependKey = (string)->
-          if upperKey then "#{JSON.stringify upperKey}: #{string}" else string
+          if upperKey
+            "#{jsonEsc upperKey}: #{string}"
+          else
+            string
         # append a comma to a string if isLast is true
         maybeAddComma = (string)->
           if isLast then string else string + ','
@@ -82,7 +85,7 @@ angular.module 'directives'
           lines.push "#{formattedEndLine}</div>"
         # scalar
         else
-          line = indent maybePrependKey maybeAddComma JSON.stringify thisObject
+          line = indent maybePrependKey maybeAddComma jsonEsc thisObject
           lines.push prependDiv "#{line}</div>"
         thisStateObject
       stateTree = go [], true
