@@ -33,7 +33,12 @@ pre {
   overflow-x: scroll;
 }
 
-.selected:hover {
+.hovered {
+  color: $base3;
+  background-color: $cyan;
+}
+
+.selected {
   color: $base3;
   background-color: $green;
 }
