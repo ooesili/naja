@@ -99,7 +99,7 @@ angular.module 'directives'
       _.each scope.selectedStateObjects, (stateObject)->
         stateObject.selected = false
       scope.selectedStateObjects = []
-      # selecte this object
+      # select this object
       stateObject = scope.stateList[stateListIndex]
       stateObject.selected = true
       scope.selectedStateObjects.push stateObject
