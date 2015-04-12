@@ -15,4 +15,9 @@ html(lang="en", ng-app="app")
     link(rel="stylesheet", href="assets/css/app.css")
   body(ng-controller="MainCtrl")
     h1 Hello!
-    json-view(obj="obj")
+    json-view(
+      obj="obj"
+      selected-state-objects="selectedStateObjects"
+    )
+    .json-nav
+      span.zipper {{selectedStateObjects | zipper}}

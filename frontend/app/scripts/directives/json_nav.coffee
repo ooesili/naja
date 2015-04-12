@@ -3,6 +3,7 @@ angular.module 'directives'
 .directive 'jsonView', ['$compile', ($compile)->
   scope:
     obj: '='
+    selectedStateObjects: '='
   template: '<div></div>'
   restrict: 'E'
   link: (scope, element, attrs)->
