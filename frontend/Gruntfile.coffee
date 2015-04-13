@@ -93,9 +93,9 @@ module.exports = (grunt)->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-jade'
-  grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-sass'
   ########### TASK REGISTRATION ###########
   grunt.registerTask 'default', ['build', 'watch']
   grunt.registerTask 'build', ['copy', 'coffee', 'jade', 'sass']
