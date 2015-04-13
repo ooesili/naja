@@ -7,11 +7,14 @@ module.exports = (grunt)->
     layout:
       scripts:
         coffee: 'app/scripts'
-        vendor: [
-          'bower_components/jquery/dist/jquery.js'
-          'bower_components/angular/angular.js'
-          'bower_components/lodash/lodash.js'
-        ]
+        vendor: vendorify('assets/scripts',
+          'bower_components/jquery/dist/jquery.js':
+            "https://code.jquery.com/jquery-2.1.3.min.js"
+          'bower_components/angular/angular.js':
+            "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"
+          'bower_components/lodash/lodash.js':
+            "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"
+        )
       styles:
         sass: ['app/styles']
       views: 'app/views'
@@ -30,7 +33,7 @@ module.exports = (grunt)->
       jsLibs:
         expand: true
         flatten: true
-        src: ['<%= layout.scripts.vendor %>']
+        src: ['<%= layout.scripts.vendor.src %>']
         dest: '../public/assets/scripts/'
         ext: '.js'
       html:
@@ -47,7 +50,7 @@ module.exports = (grunt)->
       index:
         options:
           data:
-            production: process.env.NODE_ENV == 'production'
+            vendorScripts: '<%= layout.scripts.vendor.dest %>'
         expand: true
         cwd: '<%= layout.views %>'
         src: ['**/*.jade']
@@ -95,7 +98,7 @@ module.exports = (grunt)->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   ########### TASK REGISTRATION ###########
   grunt.registerTask 'default', ['build', 'watch']
-  grunt.registerTask 'build', ['coffee', 'copy', 'jade', 'sass']
+  grunt.registerTask 'build', ['copy', 'coffee', 'jade', 'sass']
   grunt.registerTask 'heroku', ['build', 'uglify']
 
 # used to uglify files in place
@@ -104,3 +107,17 @@ identityKeys = (keys)->
   keys.forEach (key)->
     obj[key] = key
   return obj
+
+# allow easy specification of CDN alternatives for production
+vendorify = (destDir, mapping)->
+  src = []
+  remote = []
+  dest = []
+  # parse key value pairs from the mapping
+  for key in Object.keys(mapping)
+    src.push key
+    remote.push mapping[key]
+    dest.push "#{destDir}/#{path.basename key}"
+  # decide whether or not we should use CDNs
+  dest = remote if process.env.NODE_ENV is 'production'
+  {src: src, dest: dest}
