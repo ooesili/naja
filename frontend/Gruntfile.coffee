@@ -61,6 +61,7 @@ module.exports = (grunt)->
       stylesheets:
         options:
           sourcemap: 'none'
+          includePaths: ['bower_components/concise/scss']
         files:
           '../public/assets/css/app.css':
             ['<%= layout.styles.sass %>/**/*.scss']
