@@ -101,13 +101,6 @@ module.exports = (grunt)->
   grunt.registerTask 'build', ['copy', 'coffee', 'jade', 'sass']
   grunt.registerTask 'heroku', ['build', 'uglify']
 
-# used to uglify files in place
-identityKeys = (keys)->
-  obj = {}
-  keys.forEach (key)->
-    obj[key] = key
-  return obj
-
 # allow easy specification of CDN alternatives for production
 vendorify = (destDir, mapping)->
   src = []
