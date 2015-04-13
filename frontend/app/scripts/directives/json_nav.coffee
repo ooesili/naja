@@ -1,9 +1,6 @@
 angular.module 'directives'
 
 .directive 'jsonView', ['$compile', 'jsonEsc', ($compile, jsonEsc)->
-  scope:
-    obj: '='
-    selectedStateObjects: '='
   template: '<div></div>'
   restrict: 'E'
   link: (scope, element, attrs)->
@@ -117,5 +114,7 @@ angular.module 'directives'
       # mouse out
       else
         stateObject.hovered = false
+    # initialize scope state
+    scope.selectedStateObjects = []
     return
 ]

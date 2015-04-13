@@ -21,5 +21,4 @@ angular.module 'controllers'
       [[9],[10]]
     ]
     '<em>injected</em>': '<strong>strong</strong>'
-  $scope.selectedStateObjects = []
 ]
