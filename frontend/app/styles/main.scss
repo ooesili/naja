@@ -25,10 +25,13 @@ pre {
 .json-nav {
   position: fixed;
   bottom: 0px;
+  left: 0px;
+  right: 0px;
   border-top: 1px solid #BBB;
   width: 100%;
   height: 7.5em;
   background-color: #FFF;
+  padding: 0.3em;
 }
 
 .zipper {
