@@ -11,6 +11,3 @@
 /log/*
 !/log/.keep
 /tmp
-
-# the grunt task in '../frontend' will compile assets here
-/public
