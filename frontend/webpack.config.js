@@ -5,13 +5,13 @@ var path = require('path'),
 // main configuration object
 var config = {
   context: path.resolve(__dirname, 'app'),
-  entry: '.',
+  entry: './app',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../public')
   },
   resolve: {
-    extensions: ['', '.es6', '.js', '.css']
+    extensions: ['', '.es6', '.js', '.css', '.jade']
   },
   module: {
     loaders: [
