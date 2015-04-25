@@ -8,6 +8,7 @@ pre {
   overflow-x: scroll;
   cursor: default;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .hovered {
