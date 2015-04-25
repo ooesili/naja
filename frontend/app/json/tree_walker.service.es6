@@ -74,7 +74,7 @@ function treeWalker(jsonEsc) {
         });
         // after recursion
         if (isArray) { endLine = ']'; }
-        else         { endLine = '['; }
+        else         { endLine = '}'; }
         let formattedEndLine = indent(maybeAddComma(endLine));
         lines.push(`${formattedEndLine}</div>`);
       }
