@@ -2,43 +2,31 @@ import _ from 'lodash';
 import 'angular';
 
 // returns the directive definition object
-jsonView.$inject = ['$compile', 'treeWalker'];
-function jsonView($compile, treeWalker) {
-  return {
+//jsonView.$inject = ['$compile', 'treeWalker', 'JsonViewController'];
+//function jsonView($compile, treeWalker, JsonViewController) {
+jsonView.$inject = ['$compile', 'treeWalker', 'jsonData'];
+function jsonView($compile, treeWalker, jsonData) {
+  var ddo = {
     template: '<div></div>',
     restrict: 'E',
-    link: function(scope, element, attrs) {
-      var lines, stateTree;
-      // parse the JSON object
-      [lines, stateTree, scope.stateList] = treeWalker(scope.obj);
-      // compile and insert the element into the DOM
-      var newElement = angular.element(`<pre>${lines.join('')}</pre>`);
-      $compile(newElement)(scope);
-      element.replaceWith(newElement);
-      // set up scope callbacks
-      // select an object via view interaction
-      scope.select = function(stateListIndex, $event) {
-        $event.stopPropagation();
-        // deselect previously selected state objects
-        _.each(scope.selectedStateObjects, obj => obj.selected = false);
-        scope.selectedStateObjects = [];
-        // select this object
-        var stateObject = scope.stateList[stateListIndex];
-        stateObject.selected = true;
-        scope.selectedStateObjects.push(stateObject)
-      };
-      // hover over an object
-      scope.hover = function(stateListIndex, $event) {
-        $event.stopPropagation();
-        var stateObject = scope.stateList[stateListIndex];
-        // mouse over
-        if ($event.type === 'mouseover') { stateObject.hovered = true; }
-        else                             { stateObject.hovered = false; }
-      };
-    }
+    link: link,
+    controller: require('./json_view_controller'),
+    controllerAs: 'vm',
+    bindToController: true,
+    scope: {obj: '='}
   };
-  // initialize scope state
-  scope.selectedStateObjects = [];
+
+  function link(scope, element, attrs, vm) {
+    var lines;
+    // parse the JSON object
+    [lines, jsonData.stateTree, jsonData.stateList] = treeWalker(vm.obj);
+    // compile and insert the element into the DOM
+    var newElement = angular.element(`<pre>${lines.join('')}</pre>`);
+    $compile(newElement)(scope);
+    element.replaceWith(newElement);
+  }
+
+  return ddo;
 }
 
 export default jsonView;
