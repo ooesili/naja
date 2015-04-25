@@ -5,6 +5,6 @@ import './styles';
 
 angular.module('app', [
   'ngRoute',
-  require('./json_nav'),
+  require('./json'),
   require('./layout')
 ]).config(require('./app.routes'));

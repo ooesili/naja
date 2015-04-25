@@ -8,7 +8,7 @@ function jsonView($compile, treeWalker, jsonData) {
     template: '<div></div>',
     restrict: 'E',
     link: link,
-    controller: require('./json_view_controller'),
+    controller: require('./json_view.controller'),
     controllerAs: 'vm',
     bindToController: true,
     scope: {obj: '='}
