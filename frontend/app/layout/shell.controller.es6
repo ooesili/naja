@@ -1,5 +1,5 @@
-MainCtrl.$inject = ['jsonData'];
-function MainCtrl(jsonData) {
+ShellController.$inject = ['jsonData'];
+function ShellController(jsonData) {
   var vm = this;
   vm.data = jsonData;
   vm.obj = {
@@ -29,4 +29,4 @@ function MainCtrl(jsonData) {
   };
 }
 
-export default MainCtrl;
+export default ShellController;
