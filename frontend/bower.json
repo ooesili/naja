@@ -2,6 +2,6 @@
   "name": "prson",
   "private": true,
   "dependencies": {
-    "concise": "~2.1.0"
+    "pure": "~0.6.0"
   }
 }

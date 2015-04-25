@@ -1,8 +1,5 @@
-@import '~concise';
-
-*, *:before, *:after {
-  box-sizing: border-box;
-}
+@import '~pure';
+@import 'base';
 
 pre {
   background-color: #EEE;
@@ -55,6 +52,4 @@ pre {
 
 .zipper {
   font-family: "Courier System", monospace;
-  font-size: 0.8em;
 }
-
