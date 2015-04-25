@@ -53,3 +53,8 @@ pre {
 .zipper {
   font-family: "Courier System", monospace;
 }
+
+.json-input {
+  width: 100%;
+  height: 20em;
+}

@@ -10,14 +10,13 @@ function jsonView($compile, treeWalker, jsonData) {
     link: link,
     controller: require('./json_view.controller'),
     controllerAs: 'vm',
-    bindToController: true,
-    scope: {obj: '='}
+    bindToController: true
   };
 
   function link(scope, element, attrs, vm) {
     var lines;
     // parse the JSON object
-    [lines, jsonData.stateTree, jsonData.stateList] = treeWalker(vm.obj);
+    [lines, jsonData.stateTree, jsonData.stateList] = treeWalker(jsonData.obj);
     // compile and insert the element into the DOM
     var newElement = angular.element(`<pre>${lines.join('')}</pre>`);
     $compile(newElement)(scope);

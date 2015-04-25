@@ -7,4 +7,6 @@ angular.module('app', [
   'ngRoute',
   require('./json'),
   require('./layout')
-]).config(require('./app.routes'));
+])
+  .config(require('./app.routes'))
+  ;

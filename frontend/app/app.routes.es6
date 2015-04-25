@@ -1,7 +1,7 @@
 appRoutes.$inject = ['$routeProvider'];
 function appRoutes($routeProvider) {
   $routeProvider
-    .otherwise('/show');
+    .otherwise('/new');
 }
 
 export default appRoutes;
