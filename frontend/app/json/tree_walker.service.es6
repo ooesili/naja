@@ -43,7 +43,7 @@ function treeWalker(jsonEsc) {
       var isObject = _.isObject(thisObject);
       var isArray = _.isArray(thisObject);
       // object or array
-      if (isObject) {
+      if (isObject && !_.isEmpty(thisObject)) {
         // before recursion
         var startLine, endLine, keys;
         if (isArray) {
@@ -78,7 +78,7 @@ function treeWalker(jsonEsc) {
         let formattedEndLine = indent(maybeAddComma(endLine));
         lines.push(`${formattedEndLine}</div>`);
       }
-      // scalar
+      // scalar or empty object
       else {
         let line = indent(maybePrependKey(maybeAddComma(jsonEsc(thisObject))));
         lines.push(prependDiv(`${line}</div>`));
