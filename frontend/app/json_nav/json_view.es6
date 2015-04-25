@@ -2,8 +2,6 @@ import _ from 'lodash';
 import 'angular';
 
 // returns the directive definition object
-//jsonView.$inject = ['$compile', 'treeWalker', 'JsonViewController'];
-//function jsonView($compile, treeWalker, JsonViewController) {
 jsonView.$inject = ['$compile', 'treeWalker', 'jsonData'];
 function jsonView($compile, treeWalker, jsonData) {
   var ddo = {
