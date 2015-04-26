@@ -18,7 +18,9 @@ function jsonView($compile, treeWalker, jsonData) {
     // parse the JSON object
     [lines, jsonData.stateTree, jsonData.stateList] = treeWalker(jsonData.obj);
     // compile and insert the element into the DOM
-    var newElement = angular.element(`<pre>${lines.join('')}</pre>`);
+    var newElement = angular.element(
+      `<div class="json-view">${lines.join('')}</div>`
+    );
     $compile(newElement)(scope);
     element.replaceWith(newElement);
   }

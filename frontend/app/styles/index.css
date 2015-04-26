@@ -1,61 +1,6 @@
 @import '~purecss';
+@import '~purecss/build/grids-responsive.css';
+@import 'vgrid';
 @import 'base';
-
-pre {
-  background-color: #EEE;
-  padding: 0.3em;
-  border: 1px solid #BBB;
-  overflow-x: scroll;
-  cursor: default;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
-
-.hovered {
-  background-color: #B9F0B0;
-}
-
-.selected {
-  background-color: #F3B6A0;
-}
-
-.json-nav {
-  background-color: #FFF;
-  bottom: 0px;
-  padding: 0.3em;
-  position: fixed;
-  right: 0px;
-}
-
-/* bottom of screen */
-@media screen and (max-width: 80em) {
-  .json-nav {
-    border-top: 1px solid #BBB;
-    height: 13em;
-    width: 100%;
-  }
-  body {
-    padding-bottom: 13em;
-  }
-}
-
-/* right of screen */
-@media screen and (min-width: 80em) {
-  .json-nav {
-    border-left: 1px solid #BBB;
-    height: 100%;
-    width: 32em;
-  }
-  body {
-    padding-right: 32em;
-  }
-}
-
-.zipper {
-  font-family: "Courier System", monospace;
-}
-
-.json-input {
-  width: 100%;
-  height: 20em;
-}
+@import 'util';
+@import 'json';

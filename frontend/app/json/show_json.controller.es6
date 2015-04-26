@@ -11,7 +11,7 @@ function ShowJsonController(jsonData, $location) {
           arrayObject: {
             arrObjArr: {
               oh: 'yeah',
-              emptyArray: []
+              emptyArray: [],
             },
             emptyObject: {}
           }

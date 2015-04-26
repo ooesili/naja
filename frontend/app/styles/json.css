@@ -1,0 +1,24 @@
+/* highlighted objects */
+.hovered {
+  background-color: #B9F0B0;
+}
+.selected {
+  background-color: #F3B6A0;
+}
+
+.json-view {
+  white-space: pre;
+  background-color: #EEE;
+  float: left;
+  font-family: monospace, monospace;
+  min-width: 100%;
+}
+
+.zipper {
+  font-family: "Courier System", monospace;
+}
+
+.json-input {
+  width: 100%;
+  height: 20em;
+}
