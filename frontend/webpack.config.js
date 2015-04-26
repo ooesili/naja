@@ -1,6 +1,5 @@
-var path = require('path'),
-    webpack = require('webpack');
-    BowerWebpackPlugin = require('bower-webpack-plugin');
+var path = require('path');
+var webpack = require('webpack');
 
 // main configuration object
 var config = {
@@ -21,9 +20,7 @@ var config = {
       {test: /concise\.js$/, loader: 'imports?jQuery=jquery'}
     ],
   },
-  plugins: [
-    new BowerWebpackPlugin()
-  ]
+  plugins: []
 };
 
 // production configuration
