@@ -29,6 +29,8 @@
   vertical-align: middle;
   border: 1px solid grey;
   font-family: monospace, monospace;
+  white-space: pre;
+  overflow: scroll;
 }
 
 .json-panel {

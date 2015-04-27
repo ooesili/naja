@@ -5,7 +5,8 @@ export default name;
 
 angular.module(name, [
   require('./view'),
-  require('./nav')
+  require('./nav'),
+  require('./val')
 ])
   .config(require('./json.routes'))
   .factory('jsonEsc', require('./json_esc.service'))
