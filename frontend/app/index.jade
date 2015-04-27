@@ -10,4 +10,10 @@ html(lang="en", ng-app="app")
       script(src="https://code.angularjs.org/1.3.15/angular-route.min.js")
     script(src="bundle.js")
   body(ng-controller="ShellController as vm")
-    ng-view
+    nav#navbar
+      ul.float-container
+        li#logo: a Logo
+        li: a(href="#/new") New
+        li: a(href="#/new") Edit
+    .vert-lock.pad-top
+      ng-view

@@ -1,0 +1,41 @@
+.pad-top {
+  padding-top: 3em;
+}
+
+#navbar {
+  background-color: #313632;
+  background: linear-gradient(to top,#1A1A1A,#313632);
+
+  position: absolute;
+  z-index: 2;
+
+  width: 100%;
+  padding: 0px;
+  line-height: 3em;
+}
+
+#navbar > ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+#navbar > ul > li {
+  float: left;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
+#navbar > ul > li#logo {
+  font-size: 2em;
+}
+
+#navbar > ul > li > a {
+  line-height: 0px;
+  color: #CCC;
+  text-decoration: none;
+}
+
+#navbar > ul > li > a:hover {
+  color: #FFF;
+}
