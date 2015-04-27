@@ -1,7 +1,4 @@
-import $ from 'jquery';
-
-jsonNav.$inject = ['jsonData'];
-function jsonNav(jsonData) {
+function jsonNav() {
   var ddo = {
     restrict: 'A',
     templateUrl: require('./json_nav.jade'),
