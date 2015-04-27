@@ -11,7 +11,7 @@
 }
 
 /* overflow scrolling */
-.overflow {
+.scroll {
   overflow-x: scroll;
   overflow-y: scroll;
 }

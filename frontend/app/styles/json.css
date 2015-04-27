@@ -22,3 +22,15 @@
   width: 100%;
   height: 20em;
 }
+
+.json-nav {
+  height: 100%;
+  /*margin: auto auto;*/
+  vertical-align: middle;
+  border: 1px solid grey;
+  font-family: monospace, monospace;
+}
+
+.json-panel {
+  padding: 1em;
+}

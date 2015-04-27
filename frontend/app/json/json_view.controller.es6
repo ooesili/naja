@@ -10,6 +10,7 @@ function JsonViewController(jsonData) {
   // select an object via view interaction
   function select(stateListIndex, $event) {
     $event.stopPropagation();
+    // TODO: optimize
     // deselect previously selected state objects
     _.each(vm.data.selectedStateObjects, obj => obj.selected = false);
     vm.data.selectedStateObjects = [];
