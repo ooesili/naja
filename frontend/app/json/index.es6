@@ -12,6 +12,6 @@ angular.module(name, [
   .factory('jsonEsc', require('./json_esc.service'))
   .controller('NewJsonController', require('./new_json.controller'))
   .controller('ShowJsonController', require('./show_json.controller'))
-  .value('jsonData', require('./json_data.service'))
+  .service('jsonData', require('./json_data.service'))
   .value('toolbarData', require('./toolbar_data.service'))
   ;

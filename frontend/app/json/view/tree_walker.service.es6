@@ -22,7 +22,7 @@ function treeWalker(jsonEsc) {
       }
       // opening div for this object, with event and class bindings
       function prependDiv(string) {
-        return `<div ng-class="{hovered: vm.json.stateList[${stateListIndex}].hovered, selected: vm.json.stateList[${stateListIndex}].selected}" ng-mousedown="vm.select(${stateListIndex}, $event)" ng-mouseover="vm.hover(${stateListIndex}, $event)" ng-mouseout="vm.hover(${stateListIndex}, $event)">${string}`;
+        return `<div ng-class="{hovered: vm.json.stateList[${stateListIndex}].hovered, selected: vm.json.stateList[${stateListIndex}].selected}" ng-mousedown="vm.json.select(${stateListIndex}, $event)" ng-mouseover="vm.json.hover(${stateListIndex}, $event)" ng-mouseout="vm.json.hover(${stateListIndex}, $event)">${string}`;
       }
       // used for indetation and is passed into the tree structure
       var depth = zipper.length;
