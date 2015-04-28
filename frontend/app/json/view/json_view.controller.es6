@@ -3,8 +3,8 @@ function JsonViewController(jsonData) {
   var vm = this;
   vm.select = select;
   vm.hover = hover;
-  vm.data = jsonData;
-  vm.data.selectedStateObject = null;
+  vm.json = jsonData;
+  vm.json.selectedStateObject = null;
   return;
 
   // select an object via view interaction
@@ -12,19 +12,19 @@ function JsonViewController(jsonData) {
     $event.stopPropagation();
     // TODO: optimize
     // deselect previously selected state object
-    if (vm.data.selectedStateObject) {
-      vm.data.selectedStateObject.selected = false;
+    if (vm.json.selectedStateObject) {
+      vm.json.selectedStateObject.selected = false;
     }
     // select vm object
-    var stateObject = vm.data.stateList[stateListIndex];
+    var stateObject = vm.json.stateList[stateListIndex];
     stateObject.selected = true;
-    vm.data.selectedStateObject = stateObject;
+    vm.json.selectedStateObject = stateObject;
   }
 
   // hover over an object
   function hover(stateListIndex, $event) {
     $event.stopPropagation();
-    var stateObject = vm.data.stateList[stateListIndex];
+    var stateObject = vm.json.stateList[stateListIndex];
     // mouse over
     if ($event.type === 'mouseover') { stateObject.hovered = true; }
     else                             { stateObject.hovered = false; }

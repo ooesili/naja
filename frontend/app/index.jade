@@ -20,10 +20,10 @@ html(lang="en", ng-app="app")
         li: a(href="#/new") New
         li: a(href="#/new") Edit
     div#toolbar.navbar(
-      ng-class="{show: vm.toolbarData.show}"
+      ng-class="{show: vm.toolbar.show}"
     )
       ul.float-container
-        li.logo(ng-mouseenter="vm.toolbarData.show = false")
+        li.logo(ng-mouseenter="vm.toolbar.show = false")
           a Logo
     .vert-lock.pad-top
       ng-view

@@ -2,10 +2,10 @@ ShellController.$inject = ['jsonData', '$timeout', 'toolbarData'];
 function ShellController(jsonData, $timeout, toolbarData) {
   var vm = this;
   var toolbarPromise = null;
-  vm.toolbarData = toolbarData;
+  vm.toolbar = toolbarData;
   vm.cancelToolbarPromise = cancelToolbarPromise;
   vm.showToolbar = showToolbar;
-  vm.data = jsonData;
+  vm.json = jsonData;
   vm.obj = {
     string: "Hello world!",
     array: [
@@ -39,9 +39,9 @@ function ShellController(jsonData, $timeout, toolbarData) {
   }
 
   function showToolbar() {
-    if (toolbarData.showOnPage) {
+    if (vm.toolbar.showOnPage) {
       toolbarPromise = $timeout(function() {
-        vm.toolbarData.show = true;
+        vm.toolbar.show = true;
       }, 800);
     }
   }
