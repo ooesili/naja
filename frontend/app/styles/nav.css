@@ -2,10 +2,10 @@
   padding-top: 3em;
 }
 
-#navbar {
-  background-color: #313632;
-  background: linear-gradient(to top,#1A1A1A,#313632);
 
+/* abstract navbar styles */
+
+.navbar {
   position: absolute;
   z-index: 2;
 
@@ -14,28 +14,39 @@
   line-height: 3em;
 }
 
-#navbar > ul {
+.navbar > ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
 }
 
-#navbar > ul > li {
+.navbar > ul > li {
   float: left;
   padding-left: 0.3em;
   padding-right: 0.3em;
 }
 
-#navbar > ul > li#logo {
+.navbar > ul > li.logo {
   font-size: 2em;
 }
 
-#navbar > ul > li > a {
+.navbar > ul > li > a {
   line-height: 0px;
-  color: #CCC;
   text-decoration: none;
 }
 
-#navbar > ul > li > a:hover {
+
+/* primary navbar */
+
+#main_nav > ul > li > a {
+  color: #CCC;
+}
+
+#main_nav > ul > li > a:hover {
   color: #FFF;
+}
+
+#main_nav {
+  background-color: #313632;
+  background: linear-gradient(to top,#1A1A1A,#313632);
 }

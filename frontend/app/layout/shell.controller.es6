@@ -1,6 +1,10 @@
-ShellController.$inject = ['jsonData'];
-function ShellController(jsonData) {
+ShellController.$inject = ['jsonData', '$timeout', 'toolbarData'];
+function ShellController(jsonData, $timeout, toolbarData) {
   var vm = this;
+  var toolbarPromise = null;
+  vm.toolbarData = toolbarData;
+  vm.cancelToolbarPromise = cancelToolbarPromise;
+  vm.showToolbar = showToolbar;
   vm.data = jsonData;
   vm.obj = {
     string: "Hello world!",
@@ -27,6 +31,20 @@ function ShellController(jsonData) {
     ],
     '<em>injected</em>': '<strong>strong</strong>'
   };
+
+  function cancelToolbarPromise() {
+    if (toolbarPromise) {
+      $timeout.cancel(toolbarPromise);
+    }
+  }
+
+  function showToolbar() {
+    if (toolbarData.showOnPage) {
+      toolbarPromise = $timeout(function() {
+        vm.toolbarData.show = true;
+      }, 800);
+    }
+  }
 }
 
 export default ShellController;

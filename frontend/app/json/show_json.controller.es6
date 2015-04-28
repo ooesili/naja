@@ -1,7 +1,16 @@
-ShowJsonController.$inject = ['jsonData', '$location'];
-function ShowJsonController(jsonData, $location) {
+ShowJsonController.$inject = ['jsonData', '$location',
+                              'toolbarData', '$scope'];
+function ShowJsonController(jsonData, $location,
+                            toolbarData, $scope) {
+  // turn toolbar on and off
+  toolbarData.show = true;
+  toolbarData.showOnPage = true;
+  $scope.$on('$destroy', function() {
+    toolbarData.show = false;
+    toolbarData.showOnPage = false;
+  });
+  // fixture data for development
   if (jsonData.obj === undefined) {
-    // fixture data for development
     jsonData.obj = {
       string: "Hello world!",
       array: [
