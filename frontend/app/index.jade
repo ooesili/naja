@@ -11,8 +11,8 @@ html(lang="en", ng-app="app")
     script(src="bundle.js")
   body(ng-controller="ShellController as vm")
     nav#main_nav.navbar(
-      ng-mouseleave="vm.showToolbar()"
-      ng-mouseenter="vm.cancelToolbarPromise()"
+      ng-mouseleave="vm.toolbar.show()"
+      ng-mouseenter="vm.toolbar.cancelShow()"
     )
       ul.float-container
         li.logo
@@ -20,10 +20,10 @@ html(lang="en", ng-app="app")
         li: a(href="#/new") New
         li: a(href="#/new") Edit
     div#toolbar.navbar(
-      ng-class="{show: vm.toolbar.show}"
+      ng-class="{show: vm.toolbar.visible}"
     )
       ul.float-container
-        li.logo(ng-mouseenter="vm.toolbar.show = false")
+        li.logo(ng-mouseenter="vm.toolbar.visible = false")
           a Logo
     .vert-lock.pad-top
       ng-view

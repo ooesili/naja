@@ -13,5 +13,5 @@ angular.module(name, [
   .controller('NewJsonController', require('./new_json.controller'))
   .controller('ShowJsonController', require('./show_json.controller'))
   .service('jsonData', require('./json_data.service'))
-  .value('toolbarData', require('./toolbar_data.service'))
+  .service('toolbar', require('./toolbar.service'))
   ;
