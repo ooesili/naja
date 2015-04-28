@@ -4,20 +4,21 @@ function JsonViewController(jsonData) {
   vm.select = select;
   vm.hover = hover;
   vm.data = jsonData;
-  vm.data.selectedStateObjects = [];
+  vm.data.selectedStateObject = null;
   return;
 
   // select an object via view interaction
   function select(stateListIndex, $event) {
     $event.stopPropagation();
     // TODO: optimize
-    // deselect previously selected state objects
-    _.each(vm.data.selectedStateObjects, obj => obj.selected = false);
-    vm.data.selectedStateObjects = [];
+    // deselect previously selected state object
+    if (vm.data.selectedStateObject) {
+      vm.data.selectedStateObject.selected = false;
+    }
     // select vm object
     var stateObject = vm.data.stateList[stateListIndex];
     stateObject.selected = true;
-    vm.data.selectedStateObjects.push(stateObject)
+    vm.data.selectedStateObject = stateObject;
   }
 
   // hover over an object

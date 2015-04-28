@@ -4,9 +4,9 @@ JsonValController.$inject = ['$scope', 'jsonData', '$filter'];
 function JsonValController($scope, jsonData, $filter) {
   var vm = this;
   vm.data = jsonData;
-  $scope.$watch('vm.data.selectedStateObjects', function() {
-    if (jsonData.selectedStateObjects[0]) {
-      var zipper = jsonData.selectedStateObjects[0].zipper;
+  $scope.$watch('vm.data.selectedStateObject', function() {
+    if (jsonData.selectedStateObject) {
+      var zipper = jsonData.selectedStateObject.zipper;
       vm.result = $filter('json')(unzipTree(zipper, jsonData.obj));
     }
     else {
