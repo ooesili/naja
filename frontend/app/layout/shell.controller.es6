@@ -1,6 +1,7 @@
 ShellController.$inject = ['jsonData', 'toolbar'];
 function ShellController(jsonData, toolbar) {
   var vm = this;
+  vm.arrowImg = require('../images/arrow.svg')
   vm.toolbar = toolbar;
   vm.json = jsonData;
   vm.obj = {

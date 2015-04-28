@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 function JsonData() {
   this.select = select;
   this.hover = hover;
@@ -16,6 +18,11 @@ function JsonData() {
     var stateObject = this.stateList[stateListIndex];
     stateObject.selected = true;
     this.selectedStateObject = stateObject;
+    // navigation flags
+    this.canGoLeft = stateObject.zipper.length > 0;
+    this.canGoRight = !!stateObject.tree;
+    this.canGoUp = stateObject.isNotFirst;
+    this.canGoDown = !!stateObject.isNotLast;
   }
 
   // hover over an object

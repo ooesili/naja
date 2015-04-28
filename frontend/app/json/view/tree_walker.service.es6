@@ -62,15 +62,19 @@ function treeWalker(jsonEsc) {
         _.each(keys, function(key, index) {
           // create a new zipper
           var newZipper = _.clone(zipper);
+          var returnedStateObject;
           newZipper.push(key);
           if (isArray) {
-            let returnedStateObject = go(newZipper, indent == lastIndex);
+            returnedStateObject = go(newZipper, indent == lastIndex);
             thisStateObject.tree.push(returnedStateObject);
           }
           else {
-            let returnedStateObject = go(newZipper, indent == lastIndex, key);
+            returnedStateObject = go(newZipper, indent == lastIndex, key);
             thisStateObject.tree[key] = returnedStateObject;
           }
+          returnedStateObject.isNotFirst = index != 0;
+          returnedStateObject.isNotLast = index != lastIndex;
+          return;
         });
         // after recursion
         if (isArray) { endLine = ']'; }

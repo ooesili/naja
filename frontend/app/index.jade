@@ -25,5 +25,21 @@ html(lang="en", ng-app="app")
       ul.float-container
         li.logo(ng-mouseenter="vm.toolbar.visible = false")
           a Logo
+        li#left_arrow.arrow(
+          ng-class="{enabled: vm.json.canGoLeft}"
+        )
+          a: img(ng-src="{{vm.arrowImg}}")/
+        li#down_arrow.arrow(
+          ng-class="{enabled: vm.json.canGoDown}"
+        )
+          a: img(ng-src="{{vm.arrowImg}}")/
+        li#up_arrow.arrow(
+          ng-class="{enabled: vm.json.canGoUp}"
+        )
+          a: img(ng-src="{{vm.arrowImg}}")/
+        li#right_arrow.arrow(
+          ng-class="{enabled: vm.json.canGoRight}"
+        )
+          a: img(ng-src="{{vm.arrowImg}}")/
     .vert-lock.pad-top
       ng-view

@@ -17,7 +17,8 @@ var config = {
       {test: /\.es6$/, loader: 'babel-loader'},
       {test: /\.jade$/, loader: 'file?name=[path][name].html!jade-html'},
       {test: /\.css$/, loader: 'style!css'},
-      {test: /concise\.js$/, loader: 'imports?jQuery=jquery'}
+      {test: /concise\.js$/, loader: 'imports?jQuery=jquery'},
+      {test: /\.svg$/, loader: 'file'}
     ],
   },
   plugins: []
