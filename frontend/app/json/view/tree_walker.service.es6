@@ -74,11 +74,7 @@ function treeWalker(jsonEsc) {
             returnedStateObject = go(newZipper, indent == lastIndex, key);
             thisStateObject.tree[key] = returnedStateObject;
           }
-          // these are used for disabling/enabling navigation
-          returnedStateObject.isNotFirst = index != 0;
-          returnedStateObject.isNotLast = index != lastIndex;
-          // these are used for the actual navigation process
-          // TODO: use these instead of isNotFirst and isNotLast
+          // these are used for navigation
           if (prevKey !== undefined) {
             returnedStateObject.prevKey = prevKey;
           }

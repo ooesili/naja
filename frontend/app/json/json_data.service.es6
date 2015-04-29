@@ -95,8 +95,8 @@ function JsonData() {
   function refreshNavigation() {
     json.canGoLeft = json.selectedStateObject.zipper.length > 0;
     json.canGoRight = !!json.selectedStateObject.tree;
-    json.canGoUp = json.selectedStateObject.isNotFirst;
-    json.canGoDown = !!json.selectedStateObject.isNotLast;
+    json.canGoUp = json.selectedStateObject.prevKey !== undefined;
+    json.canGoDown = json.selectedStateObject.nextKey !== undefined;
   }
 };
 
