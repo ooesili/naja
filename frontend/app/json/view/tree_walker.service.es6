@@ -59,6 +59,8 @@ function treeWalker(jsonEsc) {
         lines.push(prependDiv(indent(maybePrependKey(startLine))));
         // recursion
         let lastIndex = keys.length - 1;
+        let prevKey;
+        let prevStateObject;
         _.each(keys, function(key, index) {
           // create a new zipper
           var newZipper = _.clone(zipper);
@@ -72,9 +74,19 @@ function treeWalker(jsonEsc) {
             returnedStateObject = go(newZipper, indent == lastIndex, key);
             thisStateObject.tree[key] = returnedStateObject;
           }
+          // these are used for disabling/enabling navigation
           returnedStateObject.isNotFirst = index != 0;
           returnedStateObject.isNotLast = index != lastIndex;
-          return;
+          // these are used for the actual navigation process
+          // TODO: use these instead of isNotFirst and isNotLast
+          if (prevKey !== undefined) {
+            returnedStateObject.prevKey = prevKey;
+          }
+          if (prevStateObject !== undefined) {
+            prevStateObject.nextKey = key;
+          }
+          prevKey = key;
+          prevStateObject = returnedStateObject;
         });
         // after recursion
         if (isArray) { endLine = ']'; }

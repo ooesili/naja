@@ -27,18 +27,22 @@ html(lang="en", ng-app="app")
           a Logo
         li#left_arrow.arrow(
           ng-class="{enabled: vm.json.canGoLeft}"
+          ng-click="vm.json.goLeft()"
         )
           a: img(ng-src="{{vm.arrowImg}}")/
         li#down_arrow.arrow(
           ng-class="{enabled: vm.json.canGoDown}"
+          ng-click="vm.json.goDown()"
         )
           a: img(ng-src="{{vm.arrowImg}}")/
         li#up_arrow.arrow(
           ng-class="{enabled: vm.json.canGoUp}"
+          ng-click="vm.json.goUp()"
         )
           a: img(ng-src="{{vm.arrowImg}}")/
         li#right_arrow.arrow(
           ng-class="{enabled: vm.json.canGoRight}"
+          ng-click="vm.json.goRight()"
         )
           a: img(ng-src="{{vm.arrowImg}}")/
     .vert-lock.pad-top
