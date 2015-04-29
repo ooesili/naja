@@ -67,11 +67,11 @@ function treeWalker(jsonEsc) {
           var returnedStateObject;
           newZipper.push(key);
           if (isArray) {
-            returnedStateObject = go(newZipper, indent == lastIndex);
+            returnedStateObject = go(newZipper, index === lastIndex);
             thisStateObject.tree.push(returnedStateObject);
           }
           else {
-            returnedStateObject = go(newZipper, indent == lastIndex, key);
+            returnedStateObject = go(newZipper, index === lastIndex, key);
             thisStateObject.tree[key] = returnedStateObject;
           }
           // these are used for navigation
