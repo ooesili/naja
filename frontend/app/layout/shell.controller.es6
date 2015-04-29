@@ -4,6 +4,7 @@ function ShellController(jsonData, toolbar) {
   vm.arrowImg = require('../images/arrow.svg')
   vm.toolbar = toolbar;
   vm.json = jsonData;
+  vm.keyDown = keyDown;
   vm.obj = {
     string: "Hello world!",
     array: [
@@ -29,6 +30,33 @@ function ShellController(jsonData, toolbar) {
     ],
     '<em>injected</em>': '<strong>strong</strong>'
   };
+
+  function keyDown(e) {
+    if (jsonData.active) {
+      switch (e.key) {
+        case 'h':
+        case 'ArrowLeft':
+          jsonData.goLeft();
+          e.preventDefault();
+          break;
+        case 'j':
+        case 'ArrowDown':
+          jsonData.goDown();
+          e.preventDefault();
+          break;
+        case 'k':
+        case 'ArrowUp':
+          jsonData.goUp();
+          e.preventDefault();
+          break;
+        case 'l':
+        case 'ArrowRight':
+          jsonData.goRight();
+          e.preventDefault();
+          break;
+      }
+    }
+  }
 }
 
 export default ShellController;
