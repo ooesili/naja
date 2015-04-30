@@ -1,4 +1,5 @@
 require.include('./index.jade');
+import 'jquery';
 import 'angular';
 import 'angular-animate';
 import 'angular-route';

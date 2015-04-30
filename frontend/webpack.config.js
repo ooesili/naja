@@ -17,7 +17,8 @@ var config = {
       {test: /\.js$/, exclude: /\/node_modules\//, loader: 'babel-loader'},
       {test: /\.jade$/, loader: 'file?name=[path][name].html!jade-html'},
       {test: /\.css$/, loader: 'style!css'},
-      {test: /\.svg$/, loader: 'file'}
+      {test: /\.svg$/, loader: 'file'},
+      {test: require.resolve('jquery'), loader: 'expose?jQuery'}
     ],
   },
   plugins: []
