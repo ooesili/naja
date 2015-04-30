@@ -15,7 +15,12 @@ var config = {
   module: {
     loaders: [
       {test: /\.js$/, exclude: /\/node_modules\//, loader: 'babel-loader'},
-      {test: /\.jade$/, loader: 'file?name=[path][name].html!jade-html'},
+      {test: /\/app\/index\.jade$/, loader: 'file?name=index.html!jade-html'},
+      {
+        test: /\.jade$/,
+        exclude: /\/app\/index\.jade$/,
+        loader: 'file?name=[hash].html!jade-html'
+      },
       {test: /\.css$/, loader: 'style!css'},
       {test: /\.svg$/, loader: 'file'},
       {test: require.resolve('jquery'), loader: 'expose?jQuery'}
