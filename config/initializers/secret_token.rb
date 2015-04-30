@@ -16,4 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-Prson::Application.config.secret_token = '31f31198516987854702a5f02e468b58e9a066710e4227bb77e672e56f2c780cf073b4538b9f453ff767820b76b7b49e342057da552a5b79d7fce62f91122c31'
+Naja::Application.config.secret_token = '31f31198516987854702a5f02e468b58e9a066710e4227bb77e672e56f2c780cf073b4538b9f453ff767820b76b7b49e342057da552a5b79d7fce62f91122c31'
