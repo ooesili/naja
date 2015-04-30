@@ -5,6 +5,7 @@ function ShellController(jsonData, toolbar) {
   vm.toolbar = toolbar;
   vm.json = jsonData;
   vm.keyDown = keyDown;
+  vm.clearObj = clearObj;
   vm.obj = {
     string: "Hello world!",
     array: [
@@ -56,6 +57,11 @@ function ShellController(jsonData, toolbar) {
           break;
       }
     }
+  }
+
+  function clearObj() {
+    jsonData.obj = null
+    jsonData.unparsed = null;
   }
 }
 

@@ -20,7 +20,7 @@ html(lang="en", ng-app="app")
       ul.float-container
         li.logo
           a naja
-        li: a(href="#/new") New
+        li: a(ng-click="vm.clearObj()" href="#/new") New
         li: a(href="#/new") Edit
     div#toolbar.navbar(
       ng-class="{show: vm.toolbar.visible}"
