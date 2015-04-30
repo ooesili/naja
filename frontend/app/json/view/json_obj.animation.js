@@ -6,6 +6,7 @@ function jsonObjAnimation() {
   };
 
   function addClass(elem, className) {
+    // TODO: cancel previous animation
     // stop if we aren't selecting
     if (className !== 'selected') { return; }
     // find the container's position

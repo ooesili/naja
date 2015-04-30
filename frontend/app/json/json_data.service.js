@@ -10,6 +10,8 @@ function JsonData() {
   this.goUp = goUp;
   this.goDown = goDown;
   this.goRight = goRight;
+  this.goNext = goNext;
+  this.goPrev = goPrev;
   return;
 
   // select an object via view interaction
@@ -92,11 +94,38 @@ function JsonData() {
     }
   }
 
+  function goNext() {
+    if (this.canGoNext) {
+      var stateObject = this.selectedStateObject;
+      stateObject.selected = false;
+      var stateListIndex = stateObject.stateListIndex;
+      var nextStateObject = this.stateList[stateListIndex + 1];
+      nextStateObject.selected = true;
+      this.selectedStateObject = nextStateObject;
+      refreshNavigation();
+    }
+  }
+
+  function goPrev() {
+    if (this.canGoPrev) {
+      var stateObject = this.selectedStateObject;
+      stateObject.selected = false;
+      var stateListIndex = stateObject.stateListIndex;
+      var nextStateObject = this.stateList[stateListIndex - 1];
+      nextStateObject.selected = true;
+      this.selectedStateObject = nextStateObject;
+      refreshNavigation();
+    }
+  }
+
   function refreshNavigation() {
     json.canGoLeft = json.selectedStateObject.zipper.length > 0;
     json.canGoRight = !!json.selectedStateObject.tree;
     json.canGoUp = json.selectedStateObject.prevKey !== undefined;
     json.canGoDown = json.selectedStateObject.nextKey !== undefined;
+    var stateListIndex = json.selectedStateObject.stateListIndex;
+    json.canGoPrev = stateListIndex > 0;
+    json.canGoNext = stateListIndex < json.stateList.length - 1;
   }
 };
 

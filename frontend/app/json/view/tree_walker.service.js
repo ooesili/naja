@@ -34,6 +34,7 @@ function treeWalker(jsonEsc) {
       };
       // push the state object to the flat list
       stateListIndex = stateList.push(thisStateObject) - 1;
+      thisStateObject.stateListIndex = stateListIndex;
       // indentation, and a method to indent a string
       var indentation = _.repeat('  ', depth);
       function indent(string) { return indentation + string; }

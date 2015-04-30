@@ -2,6 +2,7 @@ ShellController.$inject = ['jsonData', 'toolbar'];
 function ShellController(jsonData, toolbar) {
   var vm = this;
   vm.arrowImg = require('../images/arrow.svg')
+  vm.doubleArrowImg = require('../images/double_arrow.svg')
   vm.toolbar = toolbar;
   vm.json = jsonData;
   vm.keyDown = keyDown;
@@ -41,13 +42,17 @@ function ShellController(jsonData, toolbar) {
           e.preventDefault();
           break;
         case 'j':
+        case 'J':
         case 'ArrowDown':
-          jsonData.goDown();
+          if (e.shiftKey) { jsonData.goNext(); }
+          else            { jsonData.goDown(); }
           e.preventDefault();
           break;
         case 'k':
+        case 'K':
         case 'ArrowUp':
-          jsonData.goUp();
+          if (e.shiftKey) { jsonData.goPrev(); }
+          else            { jsonData.goUp(); }
           e.preventDefault();
           break;
         case 'l':

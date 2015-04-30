@@ -41,3 +41,11 @@
 #up_arrow img {
   transform: rotate(270deg);
 }
+
+#prev_arrow img {
+  transform: rotate(270deg);
+}
+
+#next_arrow img {
+  transform: rotate(90deg);
+}

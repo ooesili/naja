@@ -48,5 +48,16 @@ html(lang="en", ng-app="app")
           ng-click="vm.json.goRight()"
         )
           a: img(ng-src="{{vm.arrowImg}}")/
+        li divider
+        li#next_arrow.arrow(
+          ng-class="{enabled: vm.json.canGoNext}"
+          ng-click="vm.json.goNext()"
+        )
+          a: img(ng-src="{{vm.doubleArrowImg}}")/
+        li#prev_arrow.arrow(
+          ng-class="{enabled: vm.json.canGoPrev}"
+          ng-click="vm.json.goPrev()"
+        )
+          a: img(ng-src="{{vm.doubleArrowImg}}")/
     .vert-lock.pad-top
       ng-view
