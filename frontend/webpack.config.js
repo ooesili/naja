@@ -10,11 +10,11 @@ var config = {
     path: path.resolve(__dirname, '../public')
   },
   resolve: {
-    extensions: ['', '.es6', '.js', '.css', '.jade']
+    extensions: ['', '.js', '.css', '.jade']
   },
   module: {
     loaders: [
-      {test: /\.es6$/, loader: 'babel-loader'},
+      {test: /\.js$/, exclude: /\/node_modules\//, loader: 'babel-loader'},
       {test: /\.jade$/, loader: 'file?name=[path][name].html!jade-html'},
       {test: /\.css$/, loader: 'style!css'},
       {test: /concise\.js$/, loader: 'imports?jQuery=jquery'},
@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
 else {
   config.plugins.push(
     new webpack.SourceMapDevToolPlugin({
-      test: /\.(es6|js)$/,
+      test: /\.js$/,
     })
   );
 }
