@@ -50,36 +50,3 @@
   background-color: #313632;
   background: linear-gradient(to top,#1A1A1A,#313632);
 }
-
-
-/* arrow icons */
-
-.arrow img {
-  height: 2.2em;
-  display: inline;
-  border: 1px solid black;
-  border-radius: 0.4em;
-  background-color: #EEE;
-  opacity: 0.4;
-  vertical-align: middle;
-}
-
-.arrow.enabled img {
-  opacity: 1;
-}
-
-.arrow.enabled:hover img {
-  background-color: #FFF;
-}
-
-#left_arrow img {
-  transform: rotate(180deg);
-}
-
-#down_arrow img {
-  transform: rotate(90deg);
-}
-
-#up_arrow img {
-  transform: rotate(270deg);
-}
