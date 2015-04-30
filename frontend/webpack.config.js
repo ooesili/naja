@@ -37,5 +37,13 @@ if (process.env.NODE_ENV === 'production') {
     'lodash': '_'
   };
 }
+// development configuration
+else {
+  config.plugins.push(
+    new webpack.SourceMapDevToolPlugin({
+      test: /\.(es6|js)$/,
+    })
+  );
+}
 
 module.exports = config;
