@@ -4,7 +4,16 @@ var webpack = require('webpack');
 // main configuration object
 var config = {
   context: path.resolve(__dirname, 'app'),
-  entry: './app',
+  entry: {
+    app: './app',
+    vendor: [
+      'jquery',
+      'lodash',
+      'angular',
+      'angular-animate',
+      'angular-route',
+    ],
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../public')
@@ -49,7 +58,8 @@ else {
   config.plugins.push(
     new webpack.SourceMapDevToolPlugin({
       test: /\.js$/,
-    })
+    }),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
   );
 }
 
