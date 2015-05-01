@@ -39,7 +39,9 @@ if (process.env.NODE_ENV === 'production') {
   config.externals = {
     'angular': 'angular',
     'jquery': 'jQuery',
-    'lodash': '_'
+    'lodash': '_',
+    'angular-animate': 'null',
+    'angular-route': 'null',
   };
 }
 // development configuration
