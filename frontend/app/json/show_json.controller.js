@@ -5,11 +5,9 @@ function ShowJsonController(jsonData, $location, toolbar, $scope) {
   // turn toolbar on and off
   toolbar.visible = true;
   toolbar.visibleOnPage = true;
-  jsonData.active = true;
   $scope.$on('$destroy', function() {
     toolbar.visible = false;
     toolbar.visibleOnPage = false;
-    jsonData.active = false;
   });
   // fixture data for development
   if (jsonData.obj === undefined) {

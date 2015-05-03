@@ -40,7 +40,7 @@ function ShellController(jsonData, toolbar) {
   };
 
   function keyDown(e) {
-    if (jsonData.active) {
+    if (jsonData.obj !== undefined) {
       switch (e.key) {
         case 'h':
         case 'ArrowLeft':
