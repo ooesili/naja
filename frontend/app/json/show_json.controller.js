@@ -40,6 +40,7 @@ function ShowJsonController(jsonData, $location, toolbar, $scope) {
       ],
       '<em>injected</em>': '<strong>strong</strong>'
     };
+    jsonData.unparsed = JSON.stringify(jsonData.obj);
   }
 }
 
