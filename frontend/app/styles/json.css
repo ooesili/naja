@@ -1,10 +1,15 @@
 /* highlighted objects */
+
 .hovered {
   background-color: #B9F0B0;
 }
+
 .selected {
   background-color: #F3B6A0;
 }
+
+
+/* pre-like view */
 
 .json-view {
   white-space: pre;
@@ -15,19 +20,19 @@
   position: relative;
 }
 
-.zipper {
-  font-family: "Courier System", monospace;
-}
+
+/* make the input box take up the entire space */
 
 .json-input {
   width: 100%;
   height: 100%;
 }
 
+
+/* the code and value panels */
+
 .json-nav {
   height: 100%;
-  /*margin: auto auto;*/
-  vertical-align: middle;
   border: 1px solid grey;
   font-family: monospace, monospace;
   white-space: pre;

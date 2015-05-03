@@ -10,9 +10,9 @@
 }
 
 
-/* arrow icons */
+/* toolbar icons */
 
-.arrow img {
+.tool-icon img {
   height: 2.2em;
   display: inline;
   border: 1px solid black;
@@ -22,17 +22,20 @@
   vertical-align: middle;
 }
 
-.arrow.enabled img {
+.tool-icon.enabled img {
   opacity: 1;
 }
 
-.arrow.enabled:hover img {
+.tool-icon.enabled:hover img {
   background-color: #FFF;
 }
 
-.arrow.enabled.eager img {
+.tool-icon.enabled.eager img {
   box-shadow: 0px 0px 4px 3px #88D87B;
 }
+
+
+/* arrow icons */
 
 #left_arrow img {
   transform: rotate(180deg);

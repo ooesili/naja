@@ -1,3 +1,5 @@
+/* make room for for the navbar */
+
 .pad-top {
   padding-top: 3em;
 }
@@ -8,7 +10,6 @@
 .navbar {
   position: absolute;
   z-index: 2;
-
   width: 100%;
   padding: 0px;
   line-height: 3em;
