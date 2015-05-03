@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "postinstall": "./node_modules/webpack/bin/webpack.js",
+    "postinstall": "if test \"$NODE_ENV\" = production; then ./node_modules/webpack/bin/webpack.js; fi",
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
