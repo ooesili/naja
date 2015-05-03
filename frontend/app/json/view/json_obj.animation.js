@@ -10,7 +10,7 @@ function jsonObjAnimation() {
     // stop if we aren't selecting
     if (className !== 'selected') { return; }
     // find the container's position
-    var viewContainer = $('.json-view').parent();
+    var viewContainer = $('.json-view-container');
     var viewTop = viewContainer.scrollTop();
     var viewHeight = viewContainer.height();
     var viewBottom = viewTop + viewContainer.height();
