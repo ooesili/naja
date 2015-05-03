@@ -6,13 +6,6 @@ var config = {
   context: path.resolve(__dirname, 'app'),
   entry: {
     app: './app',
-    vendor: [
-      'jquery',
-      'lodash',
-      'angular',
-      'angular-animate',
-      'angular-route',
-    ],
   },
   output: {
     filename: 'bundle.js',
@@ -55,12 +48,20 @@ if (process.env.NODE_ENV === 'production') {
 }
 // development configuration
 else {
+  // split vendor libs into a seperate chunk
   config.plugins.push(
     new webpack.SourceMapDevToolPlugin({
       test: /\.js$/,
     }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
   );
+  config.entry.vendor = [
+    'jquery',
+    'lodash',
+    'angular',
+    'angular-animate',
+    'angular-route',
+  ]
 }
 
 module.exports = config;
