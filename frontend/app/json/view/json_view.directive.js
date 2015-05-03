@@ -5,7 +5,6 @@ import 'angular';
 jsonView.$inject = ['$compile', 'treeWalker', 'jsonData'];
 function jsonView($compile, treeWalker, jsonData) {
   var ddo = {
-    template: '<div></div>',
     restrict: 'E',
     link: link,
     controller: require('./json_view.controller'),
@@ -22,7 +21,7 @@ function jsonView($compile, treeWalker, jsonData) {
       `<div class="json-view">${lines.join('')}</div>`
     );
     $compile(newElement)(scope);
-    element.replaceWith(newElement);
+    element.append(newElement);
   }
 
   return ddo;

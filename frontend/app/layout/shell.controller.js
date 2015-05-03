@@ -1,12 +1,18 @@
 ShellController.$inject = ['jsonData', 'toolbar'];
 function ShellController(jsonData, toolbar) {
   var vm = this;
+  // toolbar images
   vm.arrowImg = require('../images/arrow.svg')
   vm.doubleArrowImg = require('../images/double_arrow.svg')
+  vm.checkmarkImg = require('../images/checkmark.svg');
+  vm.editImg = require('../images/edit.svg');
+  // shared data
   vm.toolbar = toolbar;
   vm.json = jsonData;
+  // functions
   vm.keyDown = keyDown;
   vm.clearObj = clearObj;
+  vm.parse = parse;
   vm.obj = {
     string: "Hello world!",
     array: [
@@ -65,8 +71,21 @@ function ShellController(jsonData, toolbar) {
   }
 
   function clearObj() {
-    jsonData.obj = null
-    jsonData.unparsed = null;
+    delete jsonData.obj;
+    jsonData.can = {};
+  }
+
+  function parse() {
+    var parsed;
+    // try to parse the input
+    try {
+      parsed = JSON.parse(vm.json.unparsed);
+    } catch (e) {
+      console.log("An error occured while parsing your input");
+      return;
+    }
+    // set data and redirect
+    jsonData.obj = parsed;
   }
 }
 

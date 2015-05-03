@@ -10,7 +10,6 @@ angular.module(name, [
 ])
   .config(require('./json.routes'))
   .factory('jsonEsc', require('./json_esc.service'))
-  .controller('NewJsonController', require('./new_json.controller'))
   .controller('ShowJsonController', require('./show_json.controller'))
   .service('jsonData', require('./json_data.service'))
   .service('toolbar', require('./toolbar.service'))

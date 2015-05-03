@@ -12,6 +12,7 @@ function JsonData() {
   this.goRight = goRight;
   this.goNext = goNext;
   this.goPrev = goPrev;
+  this.can = {};
   return;
 
   // select an object via view interaction
@@ -39,7 +40,7 @@ function JsonData() {
   }
 
   function goLeft() {
-    if (this.canGoLeft) {
+    if (this.can.goLeft) {
       var stateObject = this.selectedStateObject;
       var parentZipper = stateObject.zipper.slice(0, -1);
       stateObject.selected = false;
@@ -53,7 +54,7 @@ function JsonData() {
   }
 
   function goUp() {
-    if (this.canGoUp) {
+    if (this.can.goUp) {
       var stateObject = this.selectedStateObject;
       var parentZipper = stateObject.zipper.slice(0, -1);
       var parent = _.reduce(parentZipper, function(accum, key) {
@@ -68,7 +69,7 @@ function JsonData() {
   }
 
   function goDown() {
-    if (this.canGoDown) {
+    if (this.can.goDown) {
       var stateObject = this.selectedStateObject;
       var parentZipper = stateObject.zipper.slice(0, -1);
       var parent = _.reduce(parentZipper, function(accum, key) {
@@ -83,7 +84,7 @@ function JsonData() {
   }
 
   function goRight() {
-    if (this.canGoRight) {
+    if (this.can.goRight) {
       var stateObject = this.selectedStateObject;
       stateObject.selected = false;
       var firstKey = _.keys(stateObject.tree)[0];
@@ -95,7 +96,7 @@ function JsonData() {
   }
 
   function goNext() {
-    if (this.canGoNext) {
+    if (this.can.goNext) {
       var stateObject = this.selectedStateObject;
       stateObject.selected = false;
       var stateListIndex = stateObject.stateListIndex;
@@ -107,7 +108,7 @@ function JsonData() {
   }
 
   function goPrev() {
-    if (this.canGoPrev) {
+    if (this.can.goPrev) {
       var stateObject = this.selectedStateObject;
       stateObject.selected = false;
       var stateListIndex = stateObject.stateListIndex;
@@ -119,13 +120,13 @@ function JsonData() {
   }
 
   function refreshNavigation() {
-    json.canGoLeft = json.selectedStateObject.zipper.length > 0;
-    json.canGoRight = !!json.selectedStateObject.tree;
-    json.canGoUp = json.selectedStateObject.prevKey !== undefined;
-    json.canGoDown = json.selectedStateObject.nextKey !== undefined;
+    json.can.goLeft = json.selectedStateObject.zipper.length > 0;
+    json.can.goRight = !!json.selectedStateObject.tree;
+    json.can.goUp = json.selectedStateObject.prevKey !== undefined;
+    json.can.goDown = json.selectedStateObject.nextKey !== undefined;
     var stateListIndex = json.selectedStateObject.stateListIndex;
-    json.canGoPrev = stateListIndex > 0;
-    json.canGoNext = stateListIndex < json.stateList.length - 1;
+    json.can.goPrev = stateListIndex > 0;
+    json.can.goNext = stateListIndex < json.stateList.length - 1;
   }
 };
 

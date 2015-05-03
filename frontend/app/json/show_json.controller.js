@@ -1,5 +1,7 @@
 ShowJsonController.$inject = ['jsonData', '$location', 'toolbar', '$scope'];
 function ShowJsonController(jsonData, $location, toolbar, $scope) {
+  var vm = this;
+  vm.json = jsonData;
   // turn toolbar on and off
   toolbar.visible = true;
   toolbar.visibleOnPage = true;
@@ -38,10 +40,6 @@ function ShowJsonController(jsonData, $location, toolbar, $scope) {
       ],
       '<em>injected</em>': '<strong>strong</strong>'
     };
-  }
-  // redirect to 'new' if there is no data to show
-  if (jsonData.obj === undefined) {
-    $location.path('#/new');
   }
 }
 

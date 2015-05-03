@@ -30,6 +30,10 @@
   background-color: #FFF;
 }
 
+.arrow.enabled.eager img {
+  box-shadow: 0px 0px 4px 3px #88D87B;
+}
+
 #left_arrow img {
   transform: rotate(180deg);
 }

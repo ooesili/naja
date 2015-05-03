@@ -31,34 +31,46 @@ html(lang="en", ng-app="app")
       ul.float-container
         li.logo(ng-mouseenter="vm.toolbar.visible = false")
           a naja
+        li.arrow(
+          ng-show="vm.json.obj === undefined"
+          ng-class="{'enabled eager': vm.json.unparsed}"
+          ng-click="vm.parse()"
+        )
+          a: img(ng-src="{{vm.checkmarkImg}}")
+        li.arrow.enabled(
+          ng-show="vm.json.obj !== undefined"
+          ng-click="vm.clearObj()"
+        )
+          a: img(ng-src="{{vm.editImg}}")
+        li divider
         li#left_arrow.arrow(
-          ng-class="{enabled: vm.json.canGoLeft}"
+          ng-class="{enabled: vm.json.can.goLeft}"
           ng-click="vm.json.goLeft()"
         )
           a: img(ng-src="{{vm.arrowImg}}")/
         li#down_arrow.arrow(
-          ng-class="{enabled: vm.json.canGoDown}"
+          ng-class="{enabled: vm.json.can.goDown}"
           ng-click="vm.json.goDown()"
         )
           a: img(ng-src="{{vm.arrowImg}}")/
         li#up_arrow.arrow(
-          ng-class="{enabled: vm.json.canGoUp}"
+          ng-class="{enabled: vm.json.can.goUp}"
           ng-click="vm.json.goUp()"
         )
           a: img(ng-src="{{vm.arrowImg}}")/
         li#right_arrow.arrow(
-          ng-class="{enabled: vm.json.canGoRight}"
+          ng-class="{enabled: vm.json.can.goRight}"
           ng-click="vm.json.goRight()"
         )
           a: img(ng-src="{{vm.arrowImg}}")/
         li divider
         li#next_arrow.arrow(
-          ng-class="{enabled: vm.json.canGoNext}"
+          ng-class="{enabled: vm.json.can.goNext}"
           ng-click="vm.json.goNext()"
         )
           a: img(ng-src="{{vm.doubleArrowImg}}")/
         li#prev_arrow.arrow(
-          ng-class="{enabled: vm.json.canGoPrev}"
+          ng-class="{enabled: vm.json.can.goPrev}"
           ng-click="vm.json.goPrev()"
         )
           a: img(ng-src="{{vm.doubleArrowImg}}")/
