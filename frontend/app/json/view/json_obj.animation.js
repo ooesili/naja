@@ -6,7 +6,6 @@ function jsonObjAnimation() {
   };
 
   function addClass(elem, className) {
-    // TODO: cancel previous animation
     // stop if we aren't selecting
     if (className !== 'selected') { return; }
     // find the container's position
@@ -20,6 +19,8 @@ function jsonObjAnimation() {
     var elemBottom = elemTop + elem.height();
     // for animation
     var duration = 250;
+    // cancel previous animation
+    viewContainer.stop();
     // the top of the selection is out of view, or it's simply too big
     if (elemTop < viewTop || elemHeight > viewHeight) {
       viewContainer.animate({
