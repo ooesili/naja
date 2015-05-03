@@ -36,43 +36,43 @@ html(lang="en", ng-app="app")
           ng-class="{'enabled eager': vm.json.unparsed}"
           ng-click="vm.parse()"
         )
-          a: img(ng-src="{{vm.checkmarkImg}}")
+          a: img(ng-src="{{::vm.checkmarkImg}}")
         li.arrow.enabled(
           ng-show="vm.json.obj !== undefined"
           ng-click="vm.clearObj()"
         )
-          a: img(ng-src="{{vm.editImg}}")
+          a: img(ng-src="{{::vm.editImg}}")
         li divider
         li#left_arrow.arrow(
           ng-class="{enabled: vm.json.can.goLeft}"
           ng-click="vm.json.goLeft()"
         )
-          a: img(ng-src="{{vm.arrowImg}}")/
+          a: img(ng-src="{{::vm.arrowImg}}")/
         li#down_arrow.arrow(
           ng-class="{enabled: vm.json.can.goDown}"
           ng-click="vm.json.goDown()"
         )
-          a: img(ng-src="{{vm.arrowImg}}")/
+          a: img(ng-src="{{::vm.arrowImg}}")/
         li#up_arrow.arrow(
           ng-class="{enabled: vm.json.can.goUp}"
           ng-click="vm.json.goUp()"
         )
-          a: img(ng-src="{{vm.arrowImg}}")/
+          a: img(ng-src="{{::vm.arrowImg}}")/
         li#right_arrow.arrow(
           ng-class="{enabled: vm.json.can.goRight}"
           ng-click="vm.json.goRight()"
         )
-          a: img(ng-src="{{vm.arrowImg}}")/
+          a: img(ng-src="{{::vm.arrowImg}}")/
         li divider
         li#next_arrow.arrow(
           ng-class="{enabled: vm.json.can.goNext}"
           ng-click="vm.json.goNext()"
         )
-          a: img(ng-src="{{vm.doubleArrowImg}}")/
+          a: img(ng-src="{{::vm.doubleArrowImg}}")/
         li#prev_arrow.arrow(
           ng-class="{enabled: vm.json.can.goPrev}"
           ng-click="vm.json.goPrev()"
         )
-          a: img(ng-src="{{vm.doubleArrowImg}}")/
+          a: img(ng-src="{{::vm.doubleArrowImg}}")/
     .vert-lock.pad-top
       ng-view
