@@ -73,6 +73,7 @@ function ShellController(jsonData, toolbar) {
   function clearObj() {
     delete jsonData.obj;
     jsonData.can = {};
+    delete jsonData.selectedStateObject;
   }
 
   function parse() {
