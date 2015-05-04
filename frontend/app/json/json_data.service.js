@@ -13,7 +13,28 @@ function JsonData() {
   this.goNext = goNext;
   this.goPrev = goPrev;
   this.can = {};
+  this.clearObj = clearObj;
+  this.parse = parse;
   return;
+
+  function clearObj() {
+    delete json.obj;
+    json.can = {};
+    delete json.selectedStateObject;
+  }
+
+  function parse() {
+    var parsed;
+    // try to parse the input
+    try {
+      parsed = JSON.parse(json.unparsed);
+    } catch (e) {
+      console.log("An error occured while parsing your input");
+      return;
+    }
+    // set data and redirect
+    json.obj = parsed;
+  }
 
   function animate(elem) {
     // find the container's position

@@ -11,8 +11,6 @@ function ShellController(jsonData, toolbar) {
   vm.json = jsonData;
   // functions
   vm.keyDown = keyDown;
-  vm.clearObj = clearObj;
-  vm.parse = parse;
 
   function keyDown(e) {
     if (jsonData.obj !== undefined) {
@@ -43,25 +41,6 @@ function ShellController(jsonData, toolbar) {
           break;
       }
     }
-  }
-
-  function clearObj() {
-    delete jsonData.obj;
-    jsonData.can = {};
-    delete jsonData.selectedStateObject;
-  }
-
-  function parse() {
-    var parsed;
-    // try to parse the input
-    try {
-      parsed = JSON.parse(vm.json.unparsed);
-    } catch (e) {
-      console.log("An error occured while parsing your input");
-      return;
-    }
-    // set data and redirect
-    jsonData.obj = parsed;
   }
 }
 

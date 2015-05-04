@@ -22,7 +22,7 @@ html(lang="en", ng-app="app")
       ul.float-container
         li.logo
           a naja
-        li: a(ng-click="vm.clearObj()" href="#/new") New
+        li: a(ng-click="vm.json.clearObj()" href="#/new") New
         li: a(href="#/new") Edit
     div#toolbar.navbar(
       ng-class="{show: vm.toolbar.visible}"
@@ -33,12 +33,12 @@ html(lang="en", ng-app="app")
         li.tool-icon(
           ng-show="vm.json.obj === undefined"
           ng-class="{'enabled eager': vm.json.unparsed}"
-          ng-click="vm.parse()"
+          ng-click="vm.json.parse()"
         )
           a: img(ng-src="{{::vm.checkmarkImg}}")
         li.tool-icon.enabled(
           ng-show="vm.json.obj !== undefined"
-          ng-click="vm.clearObj()"
+          ng-click="vm.json.clearObj()"
         )
           a: img(ng-src="{{::vm.editImg}}")
         li divider
