@@ -18,6 +18,7 @@
   font-family: monospace, monospace;
   min-width: 100%;
   position: relative;
+  cursor: default;
 }
 
 
