@@ -1,11 +1,6 @@
 ShellController.$inject = ['jsonData', 'toolbar'];
 function ShellController(jsonData, toolbar) {
   var vm = this;
-  // toolbar images
-  vm.arrowImg = require('../images/arrow.svg')
-  vm.doubleArrowImg = require('../images/double_arrow.svg')
-  vm.checkmarkImg = require('../images/checkmark.svg');
-  vm.editImg = require('../images/edit.svg');
   // shared data
   vm.toolbar = toolbar;
   vm.json = jsonData;

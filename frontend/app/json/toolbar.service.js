@@ -4,6 +4,11 @@ function Toolbar($timeout) {
   var toolbarPromise = null;
   toolbar.cancelShow = cancelShow;
   toolbar.show = show;
+  // toolbar images
+  toolbar.arrowImg = require('../images/arrow.svg')
+  toolbar.doubleArrowImg = require('../images/double_arrow.svg')
+  toolbar.checkmarkImg = require('../images/checkmark.svg');
+  toolbar.editImg = require('../images/edit.svg');
   return;
 
   function cancelShow() {
