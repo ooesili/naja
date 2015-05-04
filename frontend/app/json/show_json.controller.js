@@ -29,8 +29,8 @@ var fixture = {
 var fixtureJSON = JSON.stringify(fixture);
 
 
-ShowJsonController.$inject = ['jsonData', '$location', 'toolbar', '$scope'];
-function ShowJsonController(jsonData, $location, toolbar, $scope) {
+ShowJsonController.$inject = ['jsonData', 'toolbar'];
+function ShowJsonController(jsonData, toolbar) {
   var vm = this;
   vm.json = jsonData;
   vm.toolbar = toolbar;
