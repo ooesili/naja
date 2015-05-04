@@ -1,12 +1,71 @@
-.pure-g.vert-g
-  .pure-u-1.vert-u-3-5.pure-u-xl-3-5.vert-u-xl-1-1.scroll.json-view-container
-    json-view(ng-if="vm.json.obj !== undefined")
-    textarea.json-input(
-      ng-model="vm.json.unparsed" ng-if="vm.json.obj === undefined"
-      placeholder="Paste your JSON here..."
+nav#main_nav.navbar(
+  ng-mouseleave="vm.toolbar.show()"
+  ng-mouseenter="vm.toolbar.cancelShow()"
+)
+  ul.float-container
+    li.logo
+      a naja
+div#toolbar.navbar(
+  ng-class="{show: vm.toolbar.visible}"
+)
+  ul.float-container
+    // nothing useful under here right now
+    //-li.logo(ng-mouseenter="vm.toolbar.visible = false")
+    li.logo()
+      a naja
+    li.tool-icon(
+      ng-show="vm.json.obj === undefined"
+      ng-class="{'enabled eager': vm.json.unparsed}"
+      ng-click="vm.json.parse()"
     )
-  .pure-u-1.vert-u-2-5.pure-u-xl-2-5.vert-u-xl-1-1.pure-g.vert-g
-      .pure-u-1-2.vert-u-1-1.pure-u-xl-1.vert-u-xl-1-2.json-panel
-        div(json-nav).json-nav
-      .pure-u-1-2.vert-u-1-1.pure-u-xl-1.vert-u-xl-1-2.json-panel
-        div(json-val).json-nav
+      a: img(ng-src="{{::vm.toolbar.checkmarkImg}}")
+    li.tool-icon.enabled(
+      ng-show="vm.json.obj !== undefined"
+      ng-click="vm.json.clearObj()"
+    )
+      a: img(ng-src="{{::vm.toolbar.editImg}}")
+    li divider
+    li#left_arrow.tool-icon(
+      ng-class="{enabled: vm.json.can.goLeft}"
+      ng-click="vm.json.goLeft()"
+    )
+      a: img(ng-src="{{::vm.toolbar.arrowImg}}")/
+    li#down_arrow.tool-icon(
+      ng-class="{enabled: vm.json.can.goDown}"
+      ng-click="vm.json.goDown()"
+    )
+      a: img(ng-src="{{::vm.toolbar.arrowImg}}")/
+    li#up_arrow.tool-icon(
+      ng-class="{enabled: vm.json.can.goUp}"
+      ng-click="vm.json.goUp()"
+    )
+      a: img(ng-src="{{::vm.toolbar.arrowImg}}")/
+    li#right_arrow.tool-icon(
+      ng-class="{enabled: vm.json.can.goRight}"
+      ng-click="vm.json.goRight()"
+    )
+      a: img(ng-src="{{::vm.toolbar.arrowImg}}")/
+    li divider
+    li#next_arrow.tool-icon(
+      ng-class="{enabled: vm.json.can.goNext}"
+      ng-click="vm.json.goNext()"
+    )
+      a: img(ng-src="{{::vm.toolbar.doubleArrowImg}}")/
+    li#prev_arrow.tool-icon(
+      ng-class="{enabled: vm.json.can.goPrev}"
+      ng-click="vm.json.goPrev()"
+    )
+      a: img(ng-src="{{::vm.toolbar.doubleArrowImg}}")/
+.vert-lock.pad-top
+  .pure-g.vert-g
+    .pure-u-1.vert-u-3-5.pure-u-xl-3-5.vert-u-xl-1-1.scroll.json-view-container
+      json-view(ng-if="vm.json.obj !== undefined")
+      textarea.json-input(
+        ng-model="vm.json.unparsed" ng-if="vm.json.obj === undefined"
+        placeholder="Paste your JSON here..."
+      )
+    .pure-u-1.vert-u-2-5.pure-u-xl-2-5.vert-u-xl-1-1.pure-g.vert-g
+        .pure-u-1-2.vert-u-1-1.pure-u-xl-1.vert-u-xl-1-2.json-panel
+          div(json-nav).json-nav
+        .pure-u-1-2.vert-u-1-1.pure-u-xl-1.vert-u-xl-1-2.json-panel
+          div(json-val).json-nav

@@ -33,13 +33,9 @@ ShowJsonController.$inject = ['jsonData', '$location', 'toolbar', '$scope'];
 function ShowJsonController(jsonData, $location, toolbar, $scope) {
   var vm = this;
   vm.json = jsonData;
-  // turn toolbar on and off
+  vm.toolbar = toolbar;
+  // show toolbar
   toolbar.visible = true;
-  toolbar.visibleOnPage = true;
-  $scope.$on('$destroy', function() {
-    toolbar.visible = false;
-    toolbar.visibleOnPage = false;
-  });
   // fixture data for development
   if (jsonData.obj === undefined) {
     vm.json.obj = fixture;

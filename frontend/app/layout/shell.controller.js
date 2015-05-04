@@ -1,9 +1,6 @@
-ShellController.$inject = ['jsonData', 'toolbar'];
-function ShellController(jsonData, toolbar) {
+ShellController.$inject = ['jsonData'];
+function ShellController(jsonData) {
   var vm = this;
-  // shared data
-  vm.toolbar = toolbar;
-  vm.json = jsonData;
   // functions
   vm.keyDown = keyDown;
 
