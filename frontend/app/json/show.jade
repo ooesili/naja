@@ -24,7 +24,8 @@ div#toolbar.navbar(
       ng-click="vm.json.clearObj()"
     )
       a: img(ng-src="{{::vm.toolbar.editImg}}")
-    li divider
+    li
+      .divider
     li#left_arrow.tool-icon(
       ng-class="{enabled: vm.json.can.goLeft}"
       ng-click="vm.json.goLeft()"
@@ -45,7 +46,8 @@ div#toolbar.navbar(
       ng-click="vm.json.goRight()"
     )
       a: img(ng-src="{{::vm.toolbar.arrowImg}}")/
-    li divider
+    li
+      .divider
     li#next_arrow.tool-icon(
       ng-class="{enabled: vm.json.can.goNext}"
       ng-click="vm.json.goNext()"

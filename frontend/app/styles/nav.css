@@ -13,18 +13,21 @@
   width: 100%;
   padding: 0px;
   line-height: 3em;
+  height: 3em;
 }
 
 .navbar > ul {
   list-style-type: none;
   margin: 0px;
   padding: 0px;
+  height: 100%;
 }
 
 .navbar > ul > li {
   float: left;
   padding-left: 0.3em;
   padding-right: 0.3em;
+  height: 100%;
 }
 
 .navbar > ul > li.logo {
