@@ -5,10 +5,10 @@ function Toolbar($timeout) {
   toolbar.cancelShow = cancelShow;
   toolbar.show = show;
   // toolbar images
-  toolbar.arrowImg = require('../images/arrow.svg')
-  toolbar.doubleArrowImg = require('../images/double_arrow.svg')
-  toolbar.checkmarkImg = require('../images/checkmark.svg');
-  toolbar.editImg = require('../images/edit.svg');
+  toolbar.arrowImg = require('./toolbar_icons/arrow.svg')
+  toolbar.doubleArrowImg = require('./toolbar_icons/double_arrow.svg')
+  toolbar.checkmarkImg = require('./toolbar_icons/checkmark.svg');
+  toolbar.editImg = require('./toolbar_icons/edit.svg');
   return;
 
   function cancelShow() {
