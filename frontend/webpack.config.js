@@ -42,7 +42,6 @@ if (process.env.NODE_ENV === 'production') {
     'angular': 'angular',
     'jquery': 'jQuery',
     'lodash': '_',
-    'angular-animate': 'null',
     'angular-route': 'null',
   };
 }
@@ -59,7 +58,6 @@ else {
     'jquery',
     'lodash',
     'angular',
-    'angular-animate',
     'angular-route',
   ]
 }

@@ -1,10 +1,10 @@
+import $ from 'jquery'
 import _ from 'lodash';
 
 function JsonData() {
   // TODO: rename this
   var json = this;
   this.select = select;
-  this.hover = hover;
   this.selectedStateObject = null;
   this.goLeft = goLeft;
   this.goUp = goUp;
@@ -15,41 +15,55 @@ function JsonData() {
   this.can = {};
   return;
 
-  // select an object via view interaction
-  function select(stateListIndex, $event) {
-    $event.stopPropagation();
-    // TODO: optimize
-    // deselect previously selected state object
-    if (this.selectedStateObject) {
-      this.selectedStateObject.selected = false;
+  function animate(elem) {
+    // find the container's position
+    var viewContainer = $('.json-view-container');
+    var viewTop = viewContainer.scrollTop();
+    var viewHeight = viewContainer.height();
+    var viewBottom = viewTop + viewContainer.height();
+    // find the element's position
+    var elemTop = elem.position().top;
+    var elemHeight = elem.height();
+    var elemBottom = elemTop + elem.height();
+    // for animation
+    var duration = 250;
+    // cancel previous animation
+    viewContainer.stop();
+    // the top of the selection is out of view, or it's simply too big
+    if (elemTop < viewTop || elemHeight > viewHeight) {
+      viewContainer.animate({
+        scrollTop: elemTop + 1
+      }, duration);
+    // bottom of selection is out of view
+    } else if (elemBottom > viewBottom) {
+      viewContainer.animate({
+        scrollTop: viewTop + (elemBottom - viewBottom)
+      }, duration);
     }
-    // select vm object
-    var stateObject = this.stateList[stateListIndex];
-    stateObject.selected = true;
-    this.selectedStateObject = stateObject;
-    refreshNavigation();
   }
 
-  // hover over an object
-  function hover(stateListIndex, $event) {
-    $event.stopPropagation();
-    var stateObject = this.stateList[stateListIndex];
-    // mouse over
-    if ($event.type === 'mouseover') { stateObject.hovered = true; }
-    else                             { stateObject.hovered = false; }
+  function select(stateObject) {
+    // select this object and deselect the previous one
+    if (json.selectedStateObject) {
+      json.selectedStateObject.elem.removeClass('selected');
+    }
+    // select this one and remember it for next time
+    json.selectedStateObject = stateObject;
+    stateObject.elem.addClass('selected');
+    // run animation
+    animate(stateObject.elem);
+    // update the rest of the program
+    refreshNavigation();
   }
 
   function goLeft() {
     if (this.can.goLeft) {
       var stateObject = this.selectedStateObject;
       var parentZipper = stateObject.zipper.slice(0, -1);
-      stateObject.selected = false;
       var parent = _.reduce(parentZipper, function(accum, key) {
         return accum.tree[key];
       }, this.stateTree);
-      parent.selected = true;
-      this.selectedStateObject = parent;
-      refreshNavigation();
+      this.select(parent);
     }
   }
 
@@ -60,11 +74,8 @@ function JsonData() {
       var parent = _.reduce(parentZipper, function(accum, key) {
         return accum.tree[key];
       }, this.stateTree);
-      stateObject.selected = false;
       var nextStateObject = parent.tree[stateObject.prevKey];
-      nextStateObject.selected = true;
-      this.selectedStateObject = nextStateObject;
-      refreshNavigation();
+      this.select(nextStateObject);
     }
   }
 
@@ -75,47 +86,35 @@ function JsonData() {
       var parent = _.reduce(parentZipper, function(accum, key) {
         return accum.tree[key];
       }, this.stateTree);
-      stateObject.selected = false;
       var nextStateObject = parent.tree[stateObject.nextKey];
-      nextStateObject.selected = true;
-      this.selectedStateObject = nextStateObject;
-      refreshNavigation();
+      this.select(nextStateObject);
     }
   }
 
   function goRight() {
     if (this.can.goRight) {
       var stateObject = this.selectedStateObject;
-      stateObject.selected = false;
       var firstKey = _.keys(stateObject.tree)[0];
       var firstChild = stateObject.tree[firstKey];
-      firstChild.selected = true;
-      this.selectedStateObject = firstChild;
-      refreshNavigation();
+      this.select(firstChild);
     }
   }
 
   function goNext() {
     if (this.can.goNext) {
       var stateObject = this.selectedStateObject;
-      stateObject.selected = false;
       var stateListIndex = stateObject.stateListIndex;
       var nextStateObject = this.stateList[stateListIndex + 1];
-      nextStateObject.selected = true;
-      this.selectedStateObject = nextStateObject;
-      refreshNavigation();
+      this.select(nextStateObject);
     }
   }
 
   function goPrev() {
     if (this.can.goPrev) {
       var stateObject = this.selectedStateObject;
-      stateObject.selected = false;
       var stateListIndex = stateObject.stateListIndex;
       var nextStateObject = this.stateList[stateListIndex - 1];
-      nextStateObject.selected = true;
-      this.selectedStateObject = nextStateObject;
-      refreshNavigation();
+      this.select(nextStateObject);
     }
   }
 

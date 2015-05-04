@@ -22,14 +22,12 @@ function treeWalker(jsonEsc) {
       }
       // opening div for this object, with event and class bindings
       function prependDiv(string) {
-        return `<div class="json-obj" ng-class="{hovered: vm.json.stateList[${stateListIndex}].hovered, selected: vm.json.stateList[${stateListIndex}].selected}" ng-mousedown="vm.json.select(${stateListIndex}, $event)" ng-mouseover="vm.json.hover(${stateListIndex}, $event)" ng-mouseout="vm.json.hover(${stateListIndex}, $event)">${string}`;
+        return `<div class="json-obj" data-state-index=${stateListIndex}>${string}`;
       }
       // used for indetation and is passed into the tree structure
       var depth = zipper.length;
       // create this part of the state tree
       var thisStateObject = {
-        hovered: false,
-        selected: false,
         zipper: zipper
       };
       // push the state object to the flat list
