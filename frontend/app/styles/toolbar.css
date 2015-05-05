@@ -1,6 +1,6 @@
 #toolbar {
   background-color: #DDD;
-  background: linear-gradient(to top,#CCC,#DDD);
+  background: linear-gradient(to top,#BBB,#DDD);
   transition: all 200ms ease-out;
   margin-top: -3em;
 }

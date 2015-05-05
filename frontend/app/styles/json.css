@@ -45,8 +45,12 @@
   font-family: monospace, monospace;
   white-space: pre;
   overflow: scroll;
+  background-color: #EEE;
+  box-shadow: 0.07em 0.07em 0.2em #777;
+  padding: 0.2em;
 }
 
 .json-panel {
-  padding: 1em;
+  padding: 0.5em;
+  background-color: #DDD;
 }
