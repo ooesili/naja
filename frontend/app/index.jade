@@ -15,4 +15,10 @@ html(lang="en", ng-app="app")
     ng-controller="ShellController as vm"
     ng-keydown="vm.keyDown($event)"
   )
+    noscript
+      h1 Javascript is disabled
+      p Please enable Javascript to use this site
+      p.
+        All of the scripts on this site are released under an open source
+        license
     .page-content(ng-view)
