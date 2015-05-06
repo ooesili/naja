@@ -39,19 +39,3 @@
   line-height: 0px;
   text-decoration: none;
 }
-
-
-/* primary navbar */
-
-#main_nav > ul > li > a {
-  color: #CCC;
-}
-
-#main_nav > ul > li > a:hover {
-  color: #FFF;
-}
-
-#main_nav {
-  background-color: #313632;
-  background: linear-gradient(to top,#1A1A1A,#313632);
-}
