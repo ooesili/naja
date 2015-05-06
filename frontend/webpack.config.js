@@ -24,7 +24,10 @@ var config = {
         loader: 'file?name=[hash].html!jade-html'
       },
       {test: /\.css$/, loader: 'style!css'},
-      {test: /\.svg$/, loader: 'file'},
+      {
+        test: /\.(svg|png|eot|woff2?|ttf)$/,
+        loader: 'file'
+      },
       {test: require.resolve('jquery'), loader: 'expose?jQuery'}
     ],
   },
