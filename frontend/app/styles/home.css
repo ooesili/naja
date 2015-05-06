@@ -168,3 +168,27 @@
   /*top: 18%;*/
   /*left: 64%;*/
 /*}*/
+
+
+/* animation */
+.page-content.ng-enter,
+.page-content.ng-leave {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  transition: 300ms ease all;
+}
+
+.page-content.ng-leave.ng-leave-active,
+.page-content.ng-enter {
+  opacity: 0;
+  font-size: 0em;
+}
+
+.page-content.ng-leave,
+.page-content.ng-enter.ng-enter-active {
+  opacity: 1;
+  font-size: 1em;
+}
