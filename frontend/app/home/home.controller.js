@@ -12,8 +12,8 @@ function HomeController($scope) {
   vm.toolbarImg = require('./screenshots/toolbar.png');
   // initialize scrolling
   var scrollPoints = {
-    navigation: $('.about-3'),
-    intro: $('.about-1'),
+    navigation: $('.home-panel-hover'),
+    intro: $('.home-panel-enter'),
   };
   vm.scrollOn = null;
   // scroll event handler
