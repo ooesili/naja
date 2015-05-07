@@ -10,6 +10,10 @@ function HomeController($scope) {
   vm.hoverImg = require('./screenshots/hover.png');
   vm.keyboardImg = require('./screenshots/keyboard.png');
   vm.toolbarImg = require('./screenshots/toolbar.png');
+  // social icons
+  vm.githubImg = require('./social_icons/github.svg');
+  vm.twitterImg = require('./social_icons/twitter.svg');
+  vm.linkedinImg = require('./social_icons/linkedin.svg');
   // initialize scrolling
   var scrollPoints = {
     navigation: $('.home-panel-hover'),

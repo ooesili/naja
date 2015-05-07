@@ -68,6 +68,12 @@
   padding-left: 2em;
   padding-right: 2em;
   color: white;
+}
+
+.home-panel-enter,
+.home-panel-edit,
+.home-panel-hover,
+.home-panel-toolbar {
   min-height: 32em;
 }
 
@@ -82,12 +88,32 @@
 .home-panel-hover { background-color: #A2268A; }
 .home-panel-toolbar { background-color: #83736A; }
 .home-panel-keyboard { background-color: #5EA945; }
+.home-panel-footer { background-color: #444; }
 
 .home-content h2 {
   border-bottom: 1px solid #DDD;
   margin-left: 2em;
   margin-right: 2em;
   padding-bottom: 0.3em;
+}
+
+.home-panel-footer .footer {
+  padding-top: 0.3em;
+  border-top: 1px solid #777;
+  margin-right: 5em;
+  margin-left: 5em;
+  margin-top: 0.7em;
+  color: #AAA;
+  font-size: 0.9em;
+}
+
+.social-icons {
+  float: right;
+  word-spacing: 0.2em;
+}
+
+.social-icons img {
+  height: 2em;
 }
 
 
