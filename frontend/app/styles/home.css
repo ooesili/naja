@@ -160,17 +160,26 @@
   left: 0px;
   height: 100%;
   width: 100%;
-  transition: 300ms ease all;
+  transition: 400ms ease all;
 }
 
-.page-content.ng-leave.ng-leave-active,
+
 .page-content.ng-enter {
   opacity: 0;
-  font-size: 0em;
+  z-index: 1;
+  transform: scale(0);
 }
 
-.page-content.ng-leave,
 .page-content.ng-enter.ng-enter-active {
   opacity: 1;
-  font-size: 1em;
+  transform: scale(1);
+}
+
+.page-content.ng-leave {
+  transform: translate(0, 0);
+  z-index: 2;
+}
+
+.page-content.ng-leave.ng-leave-active {
+  transform: translate(0, 100%);
 }
