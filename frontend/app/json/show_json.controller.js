@@ -37,10 +37,10 @@ function ShowJsonController(jsonData, toolbar) {
   // show toolbar
   toolbar.visible = true;
   // fixture data for development
-  if (jsonData.obj === undefined) {
-    vm.json.obj = fixture;
-    vm.json.unparsed = fixtureJSON;
-  }
+  //if (jsonData.obj === undefined) {
+    //vm.json.obj = fixture;
+    //vm.json.unparsed = fixtureJSON;
+  //}
 }
 
 export default ShowJsonController;
