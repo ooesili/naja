@@ -18,7 +18,6 @@ function HomeController($scope) {
   vm.scrollOn = null;
   // scroll event handler
   var container = $('.home-scroll-base');
-  console.log(container);
   container.on('scroll', function() {
     var currentScroll = container.scrollTop();
     // figure out where we are
