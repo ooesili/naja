@@ -77,30 +77,12 @@
   background-color: rgba(0,0,0,0.25);
 }
 
-
-.about-1 {
-  background-color: #35B981;
-}
-
-.about-2 {
-  background-color: #226AA8;
-}
-
-.about-3 {
-  background-color: #A2268A;
-}
-
-.about-4 {
-  background-color: #83736A;
-}
-
-.about-5 {
-  background-color: #5EA945;
-}
-
-.about-blank {
-  background-color: #555;
-}
+.about-1 { background-color: #35B981; }
+.about-2 { background-color: #226AA8; }
+.about-3 { background-color: #A2268A; }
+.about-4 { background-color: #83736A; }
+.about-5 { background-color: #5EA945; }
+.about-blank { background-color: #555; }
 
 .home-content h2 {
   border-bottom: 1px solid #DDD;
