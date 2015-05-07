@@ -12,7 +12,7 @@
   max-height: 100%;
 }
 
-.vert-g * {
+.vert-g > * {
   overflow: hidden;
 }
 .vert-u-4-8,
