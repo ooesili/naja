@@ -1,51 +1,60 @@
-.home-content
+.home-content.pad-top.vert-lock
   nav#home_nav.navbar
     ul.float-container
-      li.logo: a naja
-      li: a Intro
-      li: a Navigation
-  .vert-lock.scroll.pad-top
-    .pure-g
-      .pure-u-1.splash
-        h1
-          | naja
-        small (navigate a JSON API)
-        p naja helps you quickly find the data you need in a large JSON payload
-        p: a.pure-button(href="#/show") Launch
-      .pure-u-1.pure-u-lg-1-2.about-1
-        h2 enter the payload
-        .img-frame
-          img.pure-img(ng-src="{{vm.enterImg}}")
-        p.
-          Paste the payload into to application and click on the checkbox to get
-          started
-      .pure-u-1.pure-u-lg-1-2.about-2
-        h2 edit the payload
-        .img-frame
-          img.pure-img(ng-src="{{vm.editImg}}")
-        p Click on the edit icon to edit the payload at any time
-      .pure-u-1.pure-u-lg-1-2.about-3
-        h2 mouse navigation
-        .img-frame
-          img.pure-img(ng-src="{{vm.hoverImg}}")
-        p.
-          Hover over the document with your mouse, and pieces will be highlighted
-          before they you select them
-      .pure-u-1.pure-u-lg-1-2.about-4
-        h2 toolbar navigation
-        .img-frame
-          img.pure-img(ng-src="{{vm.toolbarImg}}")
-        p Navigate the JSON document using the toolbar icons for precise control
-      .pure-u-1.about-5
-        h2 keyboard navigation
-        .img-frame
-          //-.screen-tip#screen_tip_left h|left
-          //-.screen-tip#screen_tip_down j|down
-          //-.screen-tip#screen_tip_up k|up
-          //-.screen-tip#screen_tip_right l|right
-          //-.screen-tip#screen_tip_next shift-(j|down)
-          //-.screen-tip#screen_tip_prev shift-(k|up)
-          img.pure-img(ng-src="{{vm.keyboardImg}}")
-        p.
-          Use the arrow keys, or the h, j, k, and l keys (vim-style) to get
-          around the document quickly
+      li.logo(
+        ng-click="vm.scrollTo('top')"
+      ): a naja
+      li(
+        ng-class="{active: vm.scrollOn === 'intro'}"
+        ng-click="vm.scrollTo('intro')"
+      ): a Intro
+      li(
+        ng-class="{active: vm.scrollOn === 'navigation'}"
+        ng-click="vm.scrollTo('navigation')"
+      ): a Navigation
+  .vert-g
+    .vert-u-1-1.scroll.home-scroll-base
+      .pure-g.pos-rel
+        .pure-u-1.splash
+          h1
+            | naja
+          small (navigate a JSON API)
+          p naja helps you quickly find the data you need in a large JSON payload
+          p: a.pure-button(href="#/show") Launch
+        .pure-u-1.pure-u-lg-1-2.about-1
+          h2 enter the payload
+          .img-frame
+            img.pure-img(ng-src="{{vm.enterImg}}")
+          p.
+            Paste the payload into to application and click on the checkbox to get
+            started
+        .pure-u-1.pure-u-lg-1-2.about-2
+          h2 edit the payload
+          .img-frame
+            img.pure-img(ng-src="{{vm.editImg}}")
+          p Click on the edit icon to edit the payload at any time
+        .pure-u-1.pure-u-lg-1-2.about-3
+          h2 mouse navigation
+          .img-frame
+            img.pure-img(ng-src="{{vm.hoverImg}}")
+          p.
+            Hover over the document with your mouse, and pieces will be highlighted
+            before they you select them
+        .pure-u-1.pure-u-lg-1-2.about-4
+          h2 toolbar navigation
+          .img-frame
+            img.pure-img(ng-src="{{vm.toolbarImg}}")
+          p Navigate the JSON document using the toolbar icons for precise control
+        .pure-u-1.about-5
+          h2 keyboard navigation
+          .img-frame
+            //-.screen-tip#screen_tip_left h|left
+            //-.screen-tip#screen_tip_down j|down
+            //-.screen-tip#screen_tip_up k|up
+            //-.screen-tip#screen_tip_right l|right
+            //-.screen-tip#screen_tip_next shift-(j|down)
+            //-.screen-tip#screen_tip_prev shift-(k|up)
+            img.pure-img(ng-src="{{vm.keyboardImg}}")
+          p.
+            Use the arrow keys, or the h, j, k, and l keys (vim-style) to get
+            around the document quickly

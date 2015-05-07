@@ -8,6 +8,7 @@
 /* abstract navbar styles */
 
 .navbar {
+  top: 0px;
   position: absolute;
   z-index: 2;
   width: 100%;

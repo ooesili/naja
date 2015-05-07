@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-.home-content > * {
+.home-content {
   font-weight: 300;
   font-size: 1.2em;
 }
@@ -25,7 +25,7 @@
   color: #FFF;
 }
 
-#home_nav > ul > li:not(.logo) > a:hover {
+#home_nav > ul > li.active > a {
   border-bottom: 2px solid #46E660;
 }
 

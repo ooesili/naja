@@ -15,3 +15,7 @@
   overflow-x: scroll;
   overflow-y: scroll;
 }
+
+.pos-rel {
+  position: relative;
+}
