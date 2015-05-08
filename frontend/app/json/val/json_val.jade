@@ -1,1 +1,4 @@
-| {{vm.result}}
+.json-code(ng-if="vm.result") {{vm.result}}
+.json-placeholder(ng-if="!vm.result")
+  h3 value
+  p the resulting value

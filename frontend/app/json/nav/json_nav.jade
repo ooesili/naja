@@ -1,1 +1,4 @@
-| {{vm.code}}
+.json-code(ng-if="vm.code") {{vm.code}}
+.json-placeholder(ng-if="!vm.code")
+  h3 code
+  p how to access the value

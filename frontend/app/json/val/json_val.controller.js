@@ -10,7 +10,7 @@ function JsonValController($scope, jsonData, $filter) {
       vm.result = $filter('json')(unzipTree(zipper, jsonData.obj));
     }
     else {
-      vm.result = "Please select something";
+      vm.result = null;
     }
   });
 }

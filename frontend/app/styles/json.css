@@ -42,13 +42,45 @@
 .json-nav {
   height: 100%;
   border: 1px solid grey;
-  font-family: monospace, monospace;
-  white-space: pre;
-  overflow: scroll;
   background-color: #EEE;
   box-shadow: 0.07em 0.07em 0.2em #777;
   padding: 0.2em;
+  overflow: hidden;
 }
+
+.json-code {
+  font-family: monospace, monospace;
+  white-space: pre;
+  overflow: scroll;
+  height: 100%;
+}
+
+/* panel placeholder */
+.json-placeholder {
+  text-align: center;
+  color: #555;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 12em;
+  height: 12em;
+  margin-top: -6em;
+  margin-left: -6em;
+}
+
+.json-placeholder h3 {
+  border-bottom: 3px solid #DD8D27;
+  font-size: 4em;
+  text-transform: uppercase;
+  margin-top: 0px;
+}
+
+.json-placeholder p {
+  margin: 0px;
+  padding: 0px;
+  font-size: 1.2em;
+}
+
 
 .json-panel {
   padding: 0.5em;

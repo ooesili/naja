@@ -12,7 +12,7 @@ function JsonNavController($scope, jsonData) {
       }, 'data');
     }
     else {
-      vm.code = "Please select something";
+      vm.code = null;
     }
   });
 }
