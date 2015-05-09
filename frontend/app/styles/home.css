@@ -77,7 +77,7 @@
   min-height: 32em;
 }
 
-[class*="home-panel-"] p {
+[class*="home-panel-"] p.caption {
   text-align: center;
   padding: 0.5em;
   background-color: rgba(0,0,0,0.25);
