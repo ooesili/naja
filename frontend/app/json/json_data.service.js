@@ -29,7 +29,7 @@ function JsonData() {
     try {
       parsed = JSON.parse(json.unparsed);
     } catch (e) {
-      console.log("An error occured while parsing your input");
+      json.errorMsg = e.message;
       return;
     }
     // set data and redirect
