@@ -58,7 +58,10 @@ div#toolbar.navbar(
       ng-click="vm.json.goPrev()"
     )
       a: img(ng-src="{{::vm.toolbar.doubleArrowImg}}")/
-.vert-lock.pad-top
+.vert-lock.pad-top(
+  ng-keydown="vm.keyDown($event)"
+  tabindex="1"
+)
   .pure-g.vert-g
     .pure-u-1.vert-u-3-5.pure-u-xl-3-5.vert-u-xl-1-1.scroll.json-view-container
       json-view(ng-if="vm.json.obj !== undefined")

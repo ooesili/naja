@@ -34,6 +34,7 @@ function ShowJsonController(jsonData, toolbar) {
   var vm = this;
   vm.json = jsonData;
   vm.toolbar = toolbar;
+  vm.keyDown = keyDown;
   // show toolbar
   toolbar.visible = true;
   // fixture data for development
@@ -41,6 +42,38 @@ function ShowJsonController(jsonData, toolbar) {
     //vm.json.obj = fixture;
     //vm.json.unparsed = fixtureJSON;
   //}
+  return;
+
+  function keyDown(e) {
+    //debugger;
+    if (jsonData.obj === undefined) { return; }
+    switch (e.keyCode) {
+      case 37: // left arrow key
+      case 72: // h
+        jsonData.goLeft();
+        e.preventDefault();
+        break;
+      case 40: // down arrow key
+      case 74: // j
+      case 'ArrowDown':
+        if (e.shiftKey) { jsonData.goNext(); }
+        else            { jsonData.goDown(); }
+        e.preventDefault();
+        break;
+      case 38: // up arrow key
+      case 75: // k
+      case 'ArrowUp':
+        if (e.shiftKey) { jsonData.goPrev(); }
+        else            { jsonData.goUp(); }
+        e.preventDefault();
+        break;
+      case 39: // right arrow key
+      case 76: // l
+        jsonData.goRight();
+        e.preventDefault();
+        break;
+    }
+  }
 }
 
 export default ShowJsonController;

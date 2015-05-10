@@ -11,10 +11,7 @@ html(lang="en", ng-app="app")
     else
       script(src="/vendor.bundle.js")
     script(src="/bundle.js")
-  body(
-    ng-controller="ShellController as vm"
-    ng-keydown="vm.keyDown($event)"
-  )
+  body(ng-controller="ShellController as vm")
     noscript
       h1 Javascript is disabled
       p Please enable Javascript to use this site
