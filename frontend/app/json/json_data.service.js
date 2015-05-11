@@ -14,6 +14,7 @@ function JsonData() {
   this.goPrev = goPrev;
   this.can = {};
   this.clearObj = clearObj;
+  this.clearInput = clearInput;
   this.parse = parse;
   return;
 
@@ -21,6 +22,11 @@ function JsonData() {
     delete json.obj;
     json.can = {};
     delete json.selectedStateObject;
+  }
+
+  function clearInput() {
+    clearObj();
+    json.unparsed = '';
   }
 
   function parse() {

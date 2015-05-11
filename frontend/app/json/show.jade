@@ -24,6 +24,11 @@ div#toolbar.navbar(
       ng-click="vm.json.clearObj()"
     )
       a: img(ng-src="{{::vm.toolbar.editImg}}")
+    li.tool-icon(
+      ng-class="{enabled: vm.json.unparsed}"
+      ng-click="vm.json.clearInput()"
+    )
+      a: img(ng-src="{{::vm.toolbar.clearImg}}")
     li
       .divider
     li#left_arrow.tool-icon(

@@ -9,6 +9,7 @@ function Toolbar($timeout) {
   toolbar.doubleArrowImg = require('./toolbar_icons/double_arrow.svg')
   toolbar.checkmarkImg = require('./toolbar_icons/checkmark.svg');
   toolbar.editImg = require('./toolbar_icons/edit.svg');
+  toolbar.clearImg = require('./toolbar_icons/clear.svg');
   return;
 
   function cancelShow() {
